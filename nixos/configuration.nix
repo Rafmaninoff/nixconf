@@ -14,6 +14,7 @@
       ./fonts.nix
       ./sudo.nix
       ./openrgb.nix
+      ./hyprland.nix
     ];
 
   # Bootloader.
