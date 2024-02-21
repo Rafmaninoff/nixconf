@@ -44,7 +44,7 @@
   };
 
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot.kernelParams = [ "mitigations=off" "pcie_aspm=off" ];
 
   networking.hostName = "nixos-raf"; # Define your hostname.
@@ -185,6 +185,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    scx
     age
     gnome.gnome-disk-utility
     deluge

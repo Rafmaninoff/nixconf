@@ -81,7 +81,6 @@
     enableZshIntegration = true;
     pinentryFlavor = "qt";
     extraConfig = ''
-      keyserver hkps://keyserver.ubuntu.com
     '';
   };
 

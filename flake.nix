@@ -16,6 +16,7 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
     rust-overlay.url = "github:oxalica/rust-overlay";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     arrpc = {
       url = "github:notashelf/arrpc-flake";
@@ -30,7 +31,7 @@
   };
 
   outputs =
-    { self, nixpkgs, home-manager, nixos-hardware, rust-overlay, hyprland, ... }@inputs:
+    { self, nixpkgs, chaotic, home-manager, nixos-hardware, rust-overlay, hyprland, ... }@inputs:
     let inherit (self) outputs;
     in {
       # NixOS configuration entrypoint
@@ -41,6 +42,7 @@
           # > Our main nixos configuration file <
           modules = [
             ./nixos/configuration.nix
+            chaotic.nixosModules.default
             ({ pkgs, ... }: {
               nixpkgs.overlays = [
                 rust-overlay.overlays.default
