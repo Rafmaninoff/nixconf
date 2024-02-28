@@ -198,6 +198,7 @@
     appimage-run
     piper
     # blender
+    quickemu
   ];
 
   services.ratbagd.enable = true;
