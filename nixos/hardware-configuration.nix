@@ -34,6 +34,15 @@
       keyFileSize = 4096;
       keyFile = "/dev/disk/by-id/usb-A-DATA_USB_Flash_Drive_eed3a583ad6702-0:0";
     };
+    fastfiles2 = {
+      device = "/dev/disk/by-uuid/3eec1d54-5682-4729-82b9-6f88075b46ea";
+      allowDiscards = true;
+      bypassWorkqueues = true;
+      preLVM = false;
+      fallbackToPassword = true;
+      keyFileSize = 4096;
+      keyFile = "/dev/disk/by-id/usb-A-DATA_USB_Flash_Drive_eed3a583ad6702-0:0";
+    };
     fastfiles1 = {
       device = "/dev/disk/by-uuid/2d462c16-45b1-43e2-9159-0e6dfb9450bd";
       allowDiscards = true;
@@ -75,6 +84,11 @@
       device = "/dev/mapper/nixos-root";
       fsType = "btrfs";
       options = [ "subvol=@" "compress=zstd" "noatime" ];
+    };
+    "/mnt/fastfiles2" = {
+      device = "/dev/mapper/fastfiles2";
+      fsType = "btrfs";
+      options = [ "compress=zstd" "noatime" ];
     };
     "/mnt/fastfiles1" = {
       device = "/dev/mapper/fastfiles1";

@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     prismlauncher
-    yuzu-early-access
+    goverlay
 
   ];
 }

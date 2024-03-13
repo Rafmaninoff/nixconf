@@ -199,7 +199,16 @@
     piper
     # blender
     quickemu
+    libreoffice-qt
+    hunspell
+    hunspellDicts.es_ES
+    hunspellDicts.en_GB-ise
   ];
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [ ];
+  };
 
   services.ratbagd.enable = true;
 
