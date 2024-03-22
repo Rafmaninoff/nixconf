@@ -81,7 +81,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm = { enable = true; wayland.enable = true; };
-  services.xserver.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   programs.hyprland = {
     enable = true;
@@ -191,7 +191,6 @@
     gnome.gnome-disk-utility
     deluge
     wget
-    haskellPackages.kmonad
     flameshot
     clac
     vlc
@@ -221,10 +220,10 @@
   # started in user sessions.
   programs.mtr.enable = true;
   programs.gnupg.dirmngr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
 
   # List services that you want to enable:
 
