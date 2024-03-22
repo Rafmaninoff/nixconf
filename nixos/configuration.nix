@@ -3,6 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, lib, inputs, ... }:
+let
+  kmonad = (import ./kmonad.nix) pkgs;
+in
 {
   imports =
     [
@@ -202,6 +205,7 @@
     hunspell
     hunspellDicts.es_ES
     hunspellDicts.en_GB-ise
+    kmonad
   ];
 
   programs.nix-ld = {
