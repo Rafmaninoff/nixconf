@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     prismlauncher
     goverlay
+    steamtinkerlaunch
 
   ];
 }
