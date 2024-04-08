@@ -27,11 +27,11 @@ in
     configurationLimit = 30;
     netbootxyz = {
       enable = true;
-      entryFilename = "y-netbootxyz.conf";
+      sortKey = "y-netbootxyz.conf";
     };
     memtest86 = {
       enable = true;
-      entryFilename = "z-memtest86.conf";
+      sortKey = "z-memtest86.conf";
     };
   };
 
@@ -189,6 +189,7 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    btrfs-assistant
     scx
     age
     gnome.gnome-disk-utility
@@ -207,6 +208,11 @@ in
     hunspellDicts.en_GB-ise
     kmonad
   ];
+
+  services.mullvad-vpn = {
+    enable = true;
+    enableExcludeWrapper = true;
+  };
 
   programs.nix-ld = {
     enable = true;

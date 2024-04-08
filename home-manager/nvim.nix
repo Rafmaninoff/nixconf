@@ -13,7 +13,7 @@
 
     #formatters
     alejandra
-    nixfmt
+    nixfmt-classic
     nixpkgs-fmt
     beautysh
     stylua
