@@ -43,6 +43,10 @@
         stdenv.cc.cc.lib
         libkrb5
         keyutils
+        (writeShellScriptBin "launch-gamescope" ''
+          (sleep 1; pgrep gamescope | xargs renice -n -11 -p)&
+          exec gamescope "$@"
+        '')
       ];
     };
   };
