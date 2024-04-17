@@ -38,7 +38,10 @@ in
   #why is this not enabled by default yet?
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-
+  nix.optimise = {
+    automatic = true;
+    dates = [ "00:00:00" ];
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot.kernelParams = [ "mitigations=off" "pcie_aspm=off" ];
