@@ -83,7 +83,7 @@ in
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm = { enable = true; wayland.enable = true; };
+  services.displayManager.sddm = { enable = true; wayland.enable = true; };
   services.desktopManager.plasma6.enable = true;
 
   programs.hyprland = {
@@ -134,7 +134,7 @@ in
     isNormalUser = true;
     description = "raf";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "input" "uinput" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "uinput" "adbusers" ];
     packages = with pkgs; [
       firefox
       microsoft-edge
@@ -150,7 +150,10 @@ in
       KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
     '';
 
+  programs.adb.enable = true;
+
   virtualisation = {
+    spiceUSBRedirection.enable = true;
     podman = {
       enable = false;
 
@@ -224,6 +227,7 @@ in
   programs.gamemode.enable = true;
   programs.zsh.enable = true;
   programs.corectrl.enable = true;
+  programs.kdeconnect.enable = true;
 
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -1,10 +1,76 @@
 { config, pkgs, ... }:
 {
+  users = {
+    users.raf.extraGroups = [ "realtime" ];
+    groups.realtime = { };
+  };
+  services.udev.extraRules = ''
+    KERNEL=="cpu_dma_latency", group="realtime"
+  '';
+  security.pam.loginLimits = [
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "rtprio";
+      value = "98";
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "memlock";
+      value = "unlimited";
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "nice";
+      value = "-11";
+    }
+  ];
+
+  hardware.opengl.driSupport32Bit = true;
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    steam = pkgs.steam.override {
+      extraPkgs = pkgs: with pkgs; [
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        libpng
+        libpulseaudio
+        libvorbis
+        stdenv.cc.cc.lib
+        libkrb5
+        keyutils
+      ];
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     prismlauncher
     goverlay
     mangohud
     steamtinkerlaunch
-
+    (wrapOBS {
+      plugins = with obs-studio-plugins; [
+        obs-vkcapture
+      ];
+    })
+    # (lutris.override {
+    #   extraPkgs = pkgs: [
+    #     gnome3.adwaita-icon-theme
+    #   ];
+    #   extraLibraries = pkgs: [
+    #
+    #   ];
+    # })
   ];
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    gamescopeSession.enable = true;
+  };
 }

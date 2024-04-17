@@ -6,6 +6,7 @@
     nil
     gopls
     nodePackages_latest.bash-language-server
+    nodePackages_latest.pyright
     ruff-lsp
     lua-language-server
     neocmakelsp
