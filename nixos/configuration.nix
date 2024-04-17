@@ -35,17 +35,9 @@ in
     };
   };
 
+  #why is this not enabled by default yet?
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  nix.optimise = {
-    automatic = true;
-    dates = [ "00:00:00" ];
-  };
-
-  nix.gc = {
-    automatic = true;
-    dates = "00:30:00";
-  };
 
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
@@ -187,11 +179,13 @@ in
     magicOrExtension = ''\x7fELF....AI\x02'';
   };
 
+  programs.nh = {
+    enable = true;
+    flake = "/home/raf/env-nixos";
+  };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     btrfs-assistant
     scx
     age
@@ -203,7 +197,6 @@ in
     vlc
     appimage-run
     piper
-    # blender
     quickemu
     libreoffice-qt
     hunspell
