@@ -17,7 +17,6 @@ in
       ./fonts.nix
       ./sudo.nix
       ./openrgb.nix
-      ./hyprland.nix
     ];
 
   # Bootloader.
@@ -81,7 +80,6 @@ in
 
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   };
 
   # Configure keymap in X11
