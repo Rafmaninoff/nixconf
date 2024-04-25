@@ -164,9 +164,6 @@ in
     };
   };
 
-
-
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -210,6 +207,7 @@ in
     hunspellDicts.es_ES
     hunspellDicts.en_GB-ise
     kmonad
+    signal-desktop
   ];
 
   services.mullvad-vpn = {
