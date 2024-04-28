@@ -61,14 +61,15 @@
         obs-vkcapture
       ];
     })
-    # (lutris.override {
-    #   extraPkgs = pkgs: [
-    #     gnome3.adwaita-icon-theme
-    #   ];
-    #   extraLibraries = pkgs: [
-    #
-    #   ];
-    # })
+    (lutris.override {
+      extraPkgs = pkgs: [
+        gnome3.adwaita-icon-theme
+        wineWowPackages.waylandFull
+      ];
+      extraLibraries = pkgs: [
+
+      ];
+    })
   ];
 
   programs.steam = {
