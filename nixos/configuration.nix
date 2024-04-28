@@ -208,7 +208,23 @@ in
     hunspellDicts.en_GB-ise
     kmonad
     signal-desktop
+    filelight
+    arrpc
   ];
+
+  systemd.user.services = {
+    arrpc = {
+      partOf = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      wantedBy = [ "graphical-session.target" ];
+
+      description = "Discord rich presence for non-default clients";
+      serviceConfig = {
+        ExecStart = "${lib.getExe pkgs.arrpc}";
+        Restart = "always";
+      };
+    };
+  };
 
   services.mullvad-vpn = {
     enable = true;
