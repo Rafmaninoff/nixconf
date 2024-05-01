@@ -167,7 +167,6 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  services.flatpak.enable = true;
   xdg.portal.enable = true;
 
   services.input-remapper = {
@@ -210,6 +209,10 @@ in
     signal-desktop
     filelight
     arrpc
+    vesktop
+    telegram-desktop
+    whatsapp-for-linux
+    nchat
   ];
 
   systemd.user.services = {

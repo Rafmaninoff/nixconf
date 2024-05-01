@@ -56,6 +56,7 @@
     goverlay
     mangohud
     steamtinkerlaunch
+    antimicrox
     (wrapOBS {
       plugins = with obs-studio-plugins; [
         obs-vkcapture
