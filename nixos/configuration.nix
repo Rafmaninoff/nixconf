@@ -213,6 +213,7 @@ in
     telegram-desktop
     whatsapp-for-linux
     nchat
+    firedragon
   ];
 
   systemd.user.services = {

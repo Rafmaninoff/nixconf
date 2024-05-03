@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   users = {
     users.raf.extraGroups = [ "realtime" ];
@@ -57,6 +57,8 @@
     mangohud
     steamtinkerlaunch
     antimicrox
+    protonup
+    protonup-qt
     (wrapOBS {
       plugins = with obs-studio-plugins; [
         obs-vkcapture
