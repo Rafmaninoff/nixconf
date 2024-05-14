@@ -184,6 +184,10 @@ in
 
   programs.nh = {
     enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 15d --keep 5";
+    };
     flake = "/home/raf/env-nixos";
   };
 
@@ -214,6 +218,8 @@ in
     whatsapp-for-linux
     nchat
     firedragon
+    floorp
+    swayidle
   ];
 
   systemd.user.services = {
