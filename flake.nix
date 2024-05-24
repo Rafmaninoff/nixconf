@@ -15,7 +15,6 @@
     # TODO: Add any other flake you might need
     nixos-hardware.url = "github:nixos/nixos-hardware";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     arrpc = {
@@ -44,7 +43,6 @@
             ({ pkgs, ... }: {
               nixpkgs.overlays = [
                 rust-overlay.overlays.default
-                inputs.neovim-nightly-overlay.overlay
               ];
             })
           ];
