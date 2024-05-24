@@ -30,7 +30,11 @@
   outputs =
     { self, nixpkgs, chaotic, home-manager, nixos-hardware, rust-overlay, ... }@inputs:
     let inherit (self) outputs;
-    in {
+      overlays = [
+        rust-overlay.overlays.default
+      ];
+    in
+    {
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
@@ -41,9 +45,7 @@
             ./nixos/configuration.nix
             chaotic.nixosModules.default
             ({ pkgs, ... }: {
-              nixpkgs.overlays = [
-                rust-overlay.overlays.default
-              ];
+              nixpkgs.overlays = overlays;
             })
           ];
         };
@@ -60,10 +62,7 @@
           modules = [
             ./home-manager/home.nix
             ({ pkgs, ... }: {
-              nixpkgs.overlays = [
-                rust-overlay.overlays.default
-                inputs.neovim-nightly-overlay.overlay
-              ];
+              nixpkgs.overlays = overlays;
             })
           ];
         };
