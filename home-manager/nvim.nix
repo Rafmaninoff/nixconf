@@ -11,6 +11,7 @@
     lua-language-server
     neocmakelsp
     taplo
+    texlab
 
     #formatters
     alejandra
@@ -35,6 +36,9 @@
       vimPlugins.telescope-fzf-native-nvim
       xclip
       wl-clipboard
+      texlive.combined.scheme-full
+      tree-sitter
+      nodejs
     ];
   };
 }
