@@ -12,6 +12,7 @@
     ./zsh.nix
     ./kitty.nix
     ./direnv.nix
+    ./hyprland.nix
   ];
 
   nixpkgs = {

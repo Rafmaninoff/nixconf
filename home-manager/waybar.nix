@@ -82,17 +82,6 @@ let
       interval = 10;
     };
 
-    "custom/battery" = {
-      exec = "${scripts.battery}/bin/script";
-      format = " 󰁹 {}";
-      interval = 10;
-    };
-
-    "custom/gpu-usage" = {
-      exec = "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits";
-      format = "{}";
-      interval = 10;
-    };
 
     "custom/logo" = {
       exec = "echo ' '";
