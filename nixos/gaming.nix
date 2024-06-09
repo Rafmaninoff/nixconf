@@ -52,6 +52,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    ckan
+    ryujinx
     prismlauncher
     goverlay
     mangohud

@@ -220,6 +220,7 @@ in
     firedragon
     floorp
     swayidle
+    scrcpy
   ];
 
   systemd.user.services = {
