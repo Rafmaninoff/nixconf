@@ -15,6 +15,18 @@
 
   boot.initrd.luks.reusePassphrases = true;
 
+  hardware.opengl = {
+    driSupport = true;
+    driSupport32Bit = true;
+
+    extraPackages = [ pkgs.amdvlk ];
+    extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+  };
+
+  #default driver should still be MESA RADV
+  environment.variables.AMD_VULKAN_ICD = "radv";
+
+
   boot.initrd.luks.devices = {
     nixos-root = {
       device = "/dev/disk/by-uuid/b15fb526-f5f6-4ca3-be4e-f8fec733361b";

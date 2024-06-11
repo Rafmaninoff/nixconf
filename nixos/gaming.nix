@@ -28,8 +28,6 @@
     }
   ];
 
-  hardware.opengl.driSupport32Bit = true;
-
   nixpkgs.config.packageOverrides = pkgs: {
     steam = pkgs.steam.override {
       extraPkgs = pkgs: with pkgs; [
