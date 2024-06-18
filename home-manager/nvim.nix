@@ -9,6 +9,7 @@
     pyright
     ruff-lsp
     lua-language-server
+    yaml-language-server
     neocmakelsp
     taplo
     texlab
