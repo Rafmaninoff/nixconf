@@ -23,9 +23,28 @@
     extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
-  #default driver should still be MESA RADV
-  environment.variables.AMD_VULKAN_ICD = "radv";
+  environment.systemPackages = with pkgs; [
+    (writeShellScriptBin "vk_radv" ''
+      export VK_DRIVER_FILES = "/run/opengl-driver-32/vulkan/icd.d/radeon_icd.i686.json:/run/opengl-driver/vulkan/icd.d/radeon_icd.x86_64.json"
+      "$@"
+    '')
+    (writeShellScriptBin "vk_amdvlk" ''
+      export VK_DRIVER_FILES = "/run/opengl-driver-32/vulkan/icd.d/amd_icd32.json:/run/opengl-driver/vulkan/icd.d/amd_icd64.json"
+      "$@"
+    '')
+    (writeShellScriptBin "vk_amdgpu_pro" ''
+      echo "stub"
+      # export VK_DRIVER_FILES = "/run/opengl-driver-32/vulkan/icd.d/radeon_icd.i686.json:/run/opengl-driver/vulkan/icd.d/radeon_icd.x86_64.json"
+      # "$@"
 
+    '')
+  ];
+
+
+
+  #force default driver to be mesa radv
+  environment.variables.VK_DRIVER_FILES = "/run/opengl-driver-32/vulkan/icd.d/radeon_icd.i686.json:/run/opengl-driver/vulkan/icd.d/radeon_icd.x86_64.json";
+  # environment.variables.DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1 = 1;
 
   boot.initrd.luks.devices = {
     nixos-root = {
