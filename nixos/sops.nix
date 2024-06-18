@@ -9,6 +9,7 @@
   sops.secrets = {
     example_key = { };
     "myservice/mysubdir/mysecret" = { };
+    duckdns_token = { owner = config.users.users.raf.name; };
   };
 
 }

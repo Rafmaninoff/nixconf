@@ -17,6 +17,7 @@ in
       ./sudo.nix
       ./sops.nix
       ./openrgb.nix
+      modules/duckdns.nix
     ];
 
   # Bootloader.
@@ -37,6 +38,12 @@ in
   #why is this not enabled by default yet?
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  services.duckdns = {
+    enable = true;
+    domains = [ "rafmaninoff" ];
+    tokenFile = /run/secrets/duckdns_token;
+
+  };
 
   nix.optimise = {
     automatic = true;
