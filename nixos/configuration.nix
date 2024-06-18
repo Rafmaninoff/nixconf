@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, pkgs-unfuck, lib, inputs, ... }:
 let
   kmonad = (import ./kmonad.nix) pkgs;
 in
@@ -108,6 +108,8 @@ in
 
   services.blueman.enable = true;
 
+  services.flatpak.enable = true;
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -191,7 +193,7 @@ in
     flake = "/home/raf/env-nixos";
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     vim
     btrfs-assistant
     scx
@@ -218,10 +220,13 @@ in
     whatsapp-for-linux
     nchat
     firedragon
-    floorp
     swayidle
     scrcpy
-  ];
+  ])
+  ++
+  (with pkgs-unfuck; [
+    floorp
+  ]);
 
   systemd.user.services = {
     arrpc = {

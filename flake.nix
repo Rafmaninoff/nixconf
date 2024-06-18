@@ -7,6 +7,8 @@
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     #pinned to a specific commit to fix amdgpu issue, should be reverted after it is fixed
 
+    nixpkgs-floorp-unfuck.url = "github:nixos/nixpkgs/3f316d2a50699a78afe5e77ca486ad553169061e";
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     #home-manager.url = "github:nix-community/home-manager/release-23.05";
@@ -33,6 +35,7 @@
       overlays = [
         rust-overlay.overlays.default
       ];
+      pkgs-unfuck = inputs.nixpkgs-floorp-unfuck.legacyPackages."x86_64-linux";
     in
     {
       # NixOS configuration entrypoint
@@ -48,6 +51,9 @@
               nixpkgs.overlays = overlays;
             })
           ];
+          specialArgs = {
+            inherit pkgs-unfuck;
+          };
         };
       };
 
