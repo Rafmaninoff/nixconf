@@ -9,7 +9,7 @@ in
 {
   imports =
     [
-      # Include the results of the hardware scan.
+      inputs.sops-nix.nixosModules.sops
       ./hardware-configuration.nix
       ./ananicy.nix
       ./0t1.nix
@@ -36,6 +36,15 @@ in
 
   #why is this not enabled by default yet?
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/raf/.config/sops/age/keys.txt";
+
+  sops.secrets = {
+    example-key = { };
+    "myservice/mysubdir/mysecret" = { };
+  };
 
   nix.optimise = {
     automatic = true;
@@ -194,6 +203,7 @@ in
   };
 
   environment.systemPackages = (with pkgs; [
+    sops
     vim
     btrfs-assistant
     scx
