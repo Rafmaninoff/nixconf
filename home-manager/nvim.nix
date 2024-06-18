@@ -5,7 +5,7 @@
     #language servers
     nil
     gopls
-    nodePackages_latest.bash-language-server
+    bash-language-server
     pyright
     ruff-lsp
     lua-language-server
