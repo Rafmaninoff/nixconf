@@ -9,13 +9,13 @@ in
 {
   imports =
     [
-      inputs.sops-nix.nixosModules.sops
       ./hardware-configuration.nix
       ./ananicy.nix
       ./0t1.nix
       ./gaming.nix
       ./fonts.nix
       ./sudo.nix
+      ./sops.nix
       ./openrgb.nix
     ];
 
@@ -37,14 +37,6 @@ in
   #why is this not enabled by default yet?
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  sops.defaultSopsFile = ../secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/raf/.config/sops/age/keys.txt";
-
-  sops.secrets = {
-    example-key = { };
-    "myservice/mysubdir/mysecret" = { };
-  };
 
   nix.optimise = {
     automatic = true;
