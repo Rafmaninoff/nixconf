@@ -50,6 +50,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    vulkan-tools
+    gpu-viewer
     ckan
     ryujinx
     prismlauncher
