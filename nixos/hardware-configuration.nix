@@ -13,7 +13,8 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
 
-  boot.initrd.luks.reusePassphrases = true;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  boot.kernelParams = [ "mitigations=off" "pcie_aspm=off" ];
 
   hardware.opengl = {
     driSupport = true;
@@ -45,6 +46,8 @@
   #force default driver to be mesa radv
   environment.variables.VK_DRIVER_FILES = "/run/opengl-driver-32/share/vulkan/icd.d/radeon_icd.i686.json:/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
   environment.variables.DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1 = 1;
+
+  boot.initrd.luks.reusePassphrases = true;
 
   boot.initrd.luks.devices = {
     nixos-root = {

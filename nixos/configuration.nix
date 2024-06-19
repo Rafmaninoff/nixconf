@@ -51,8 +51,6 @@ in
     dates = [ "00:00:00" ];
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  boot.kernelParams = [ "mitigations=off" "pcie_aspm=off" ];
 
   networking.hostName = "nixos-raf"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -266,9 +264,15 @@ in
 
   programs.gamemode.enable = true;
   programs.zsh.enable = true;
-  programs.corectrl.enable = true;
   programs.kdeconnect.enable = true;
 
+  programs.corectrl = {
+    enable = true;
+    gpuOverclock = {
+      enable = true;
+      ppfeaturemask = "0xffffffff";
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

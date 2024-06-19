@@ -12,9 +12,7 @@
       rndtime = "8m";
       overalljails = true;
     };
-    jails.sshd.settings = {
-      mode = "aggresive";
-    };
+    jails.sshd = lib.mkDefault (lib.mkAfter ''mode = aggressive'');
   };
 
   services.openssh = {
