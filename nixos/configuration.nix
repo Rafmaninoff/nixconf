@@ -230,10 +230,10 @@ in
     firedragon
     swayidle
     scrcpy
+    floorp
   ])
   ++
   (with pkgs-unfuck; [
-    floorp
   ]);
 
   systemd.user.services = {
