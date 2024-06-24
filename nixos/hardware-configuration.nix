@@ -16,9 +16,9 @@
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot.kernelParams = [ "mitigations=off" "pcie_aspm=off" ];
 
-  hardware.opengl = {
-    driSupport = true;
-    driSupport32Bit = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
 
     extraPackages = [ pkgs.amdvlk pkgs.rocmPackages.clr.icd ];
     extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
