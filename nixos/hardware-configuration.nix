@@ -11,7 +11,7 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "ahci" "xhci_pci" "usbhid" "usb_storage" "uas" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-amd" "amd_iommu" ];
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot.kernelParams = [ "mitigations=off" "pcie_aspm=off" ];

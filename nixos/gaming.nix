@@ -72,6 +72,7 @@
         wineWowPackages.waylandFull
       ];
       extraLibraries = pkgs: [
+        gst_all_1.gstreamer
 
       ];
     })
