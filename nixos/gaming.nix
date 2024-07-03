@@ -54,6 +54,7 @@
     gpu-viewer
     ckan
     ryujinx
+    cemu
     prismlauncher
     goverlay
     mangohud
