@@ -190,23 +190,23 @@
         "type": "github"
       }
     },
-    "nixpkgs-floorp-unfuck": {
+    "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1716358718,
-        "narHash": "sha256-NQbegJb2ZZnAqp2EJhWwTf6DrZXSpA6xZCEq+RGV1r0=",
+        "lastModified": 1720553833,
+        "narHash": "sha256-IXMiHQMtdShDXcBW95ctA+m5Oq2kLxnBt7WlMxvDQXA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3f316d2a50699a78afe5e77ca486ad553169061e",
+        "rev": "249fbde2a178a2ea2638b65b9ecebd531b338cf9",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
+        "ref": "nixos-24.05",
         "repo": "nixpkgs",
-        "rev": "3f316d2a50699a78afe5e77ca486ad553169061e",
         "type": "github"
       }
     },
-    "nixpkgs-stable": {
+    "nixpkgs-stable_2": {
       "locked": {
         "lastModified": 1720282526,
         "narHash": "sha256-dudRkHPRivMNOhd04YI+v4sWvn2SnN5ODSPIu5IVbco=",
@@ -261,7 +261,7 @@
         "home-manager": "home-manager_2",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-floorp-unfuck": "nixpkgs-floorp-unfuck",
+        "nixpkgs-stable": "nixpkgs-stable",
         "rust-overlay": "rust-overlay",
         "sops-nix": "sops-nix"
       }
@@ -289,7 +289,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nixpkgs-stable": "nixpkgs-stable"
+        "nixpkgs-stable": "nixpkgs-stable_2"
       },
       "locked": {
         "lastModified": 1720479166,
