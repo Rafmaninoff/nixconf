@@ -2,8 +2,9 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-unfuck, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 let
+  pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux;
   kmonad = (import ./kmonad.nix) pkgs;
 in
 {
@@ -206,7 +207,7 @@ in
     btrfs-assistant
     scx
     age
-    gnome.gnome-disk-utility
+    gnome-disk-utility
     deluge
     wget
     flameshot
@@ -214,7 +215,6 @@ in
     vlc
     appimage-run
     piper
-    quickemu
     libreoffice-qt
     hunspell
     hunspellDicts.es_ES
@@ -230,10 +230,11 @@ in
     firedragon
     swayidle
     scrcpy
-    floorp
   ])
   ++
-  (with pkgs-unfuck; [
+  (with pkgs-stable; [
+    quickemu
+    floorp
   ]);
 
   systemd.user.services = {
