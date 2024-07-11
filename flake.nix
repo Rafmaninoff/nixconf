@@ -33,8 +33,12 @@
   };
 
   outputs =
-    { self, nixpkgs, chaotic, home-manager, nixos-hardware, rust-overlay, ... }@inputs:
+    { self, nixpkgs, nixpkgs-stable, chaotic, home-manager, nixos-hardware, rust-overlay, ... }@inputs:
     let inherit (self) outputs;
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+
       overlays = [
         rust-overlay.overlays.default
       ];
@@ -46,6 +50,7 @@
         "nixos-raf" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit pkgs-stable; };
           # > Our main nixos configuration file <
           modules = [
             ./nixos/configuration.nix
@@ -54,7 +59,6 @@
               nixpkgs.overlays = overlays;
             })
           ];
-          specialArgs = { };
         };
       };
 

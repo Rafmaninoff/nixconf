@@ -11,6 +11,6 @@
       enable_audio_bell = "yes";
 
     };
-    theme = "Tokyo Night Storm";
+    theme = "Tokyo Night";
   };
 }

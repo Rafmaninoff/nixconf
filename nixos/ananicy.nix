@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, pkgs-stable, ... }:
 {
-  services.ananicy = with pkgs; {
+  services.ananicy = {
     enable = true;
-    # package = ananicy-cpp;
-    rulesProvider = ananicy-rules-cachyos;
+    package = inputs.nixpkgs-stable.legacyPackages.x86_64-linux.ananicy-cpp;
+    rulesProvider = inputs.nixpkgs.legacyPackages.x86_64-linux.ananicy-rules-cachyos;
     extraRules = [
       {
         name = "gamescope";

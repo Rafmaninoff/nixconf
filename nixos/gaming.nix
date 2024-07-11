@@ -5,7 +5,7 @@
     groups.realtime = { };
   };
   services.udev.extraRules = ''
-    KERNEL=="cpu_dma_latency", group="realtime"
+    KERNEL=="cpu_dma_latency", GROUP="realtime"
   '';
   security.pam.loginLimits = [
     {
@@ -55,6 +55,7 @@
     ckan
     ryujinx
     cemu
+    melonDS
     prismlauncher
     goverlay
     mangohud
@@ -78,6 +79,16 @@
       ];
     })
   ];
+
+  programs.gamemode = {
+    enable = true;
+    enableRenice = true;
+  };
+
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
 
   programs.steam = {
     enable = true;

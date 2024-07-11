@@ -227,7 +227,7 @@ in
     telegram-desktop
     whatsapp-for-linux
     nchat
-    firedragon
+    # firedragon
     swayidle
     scrcpy
   ])
@@ -263,7 +263,6 @@ in
 
   services.ratbagd.enable = true;
 
-  programs.gamemode.enable = true;
   programs.zsh.enable = true;
   programs.kdeconnect.enable = true;
 
