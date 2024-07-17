@@ -172,8 +172,14 @@ in
     };
   };
 
+  #use lix as nix impl, mostly so cached error is an error of the past.
+  nix.package = pkgs.lix;
+
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = (_: true);
+  };
 
   xdg.portal.enable = true;
 
