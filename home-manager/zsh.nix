@@ -23,13 +23,13 @@
       		    abbrev-alias --init
       		    for file in ''${XDG_CONFIG_HOME:-$HOME/.config}/zsh/*(.); source $file
 
-                  # list files when switching directories
-                  function auto_cdls(){
-                      emulate -L zsh
-                      eza --group-directories-first
-                  }
-                  chpwd_functions=(''${chpwd_functions[@]} "auto_cdls")
-                  bindkey "''${key[Up]}" up-line-or-search
+              # list files when switching directories
+              function auto_cdls(){
+                  emulate -L zsh
+                  eza --group-directories-first
+              }
+              chpwd_functions=(''${chpwd_functions[@]} "auto_cdls")
+              bindkey "''${key[Up]}" up-line-or-search
       		'';
     autocd = true;
     enableVteIntegration = true;
