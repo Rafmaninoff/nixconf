@@ -11,7 +11,6 @@
     ./nvim.nix
     ./zsh.nix
     ./kitty.nix
-    ./direnv.nix
     ./hyprland.nix
   ];
 
@@ -53,7 +52,6 @@
     fzy
     lazygit
     gh
-    yadm
   ];
 
 
@@ -83,6 +81,12 @@
     pinentryPackage = pkgs.pinentry-qt;
     extraConfig = ''
     '';
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
   };
 
   # Nicely reload system units when changing configs
