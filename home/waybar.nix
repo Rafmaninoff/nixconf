@@ -99,7 +99,6 @@ let
 
     "hyprland/language" = {
       format = " {}";
-      format-uk = "державна";
       format-en = "english";
       format-ru = "русский";
     };

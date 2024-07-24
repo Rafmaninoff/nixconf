@@ -52,6 +52,7 @@
     fzy
     lazygit
     gh
+    yadm
   ];
 
 
@@ -66,6 +67,9 @@
     signing = {
       key = null;
       signByDefault = true;
+    };
+    extraConfig = {
+      init.defaultBranch = "main";
     };
   };
 
