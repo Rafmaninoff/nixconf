@@ -1,26 +1,4 @@
 { inputs, pkgs, ... }: {
-  home.packages = with pkgs; [
-    (rust-bin.stable.latest.default.override { extensions = [ "rust-src" ]; })
-
-    #language servers
-    nil
-    gopls
-    bash-language-server
-    pyright
-    ruff-lsp
-    lua-language-server
-    yaml-language-server
-    neocmakelsp
-    taplo
-    texlab
-
-    #formatters
-    alejandra
-    nixfmt-classic
-    nixpkgs-fmt
-    beautysh
-    stylua
-  ];
 
   programs.neovim = {
     enable = true;
@@ -28,6 +6,9 @@
     vimdiffAlias = true;
     withPython3 = true;
     extraPackages = with pkgs; [
+      (rust-bin.stable.latest.default.override { extensions = [ "rust-src" "rust-analyzer" "rustfmt" "clippy" ]; })
+      lua5_1
+      lua51Packages.luarocks-nix
       gcc
       gnumake
       unzip
@@ -40,6 +21,39 @@
       texlive.combined.scheme-full
       tree-sitter
       nodejs
+      go
+      gotools
+
+      #language servers
+      nil
+      gopls
+      bash-language-server
+      pyright
+      ruff-lsp
+      lua-language-server
+      yaml-language-server
+      neocmakelsp
+      taplo
+      texlab
+      haskell-language-server
+      haskellPackages.hoogle
+      haskellPackages.fast-tags
+      haskellPackages.haskell-debug-adapter
+      haskellPackages.ghci-dap
+
+
+      #formatters
+      alejandra
+      nixfmt-classic
+      nixpkgs-fmt
+      beautysh
+      stylua
+      gofumpt
+      markdownlint-cli2
+      prettierd
+      shfmt
     ];
+
+
   };
 }
