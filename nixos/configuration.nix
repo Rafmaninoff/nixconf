@@ -229,7 +229,7 @@ in
     arrpc
     vesktop
     telegram-desktop
-    whatsapp-for-linux
+    zapzap
     nchat
     # firedragon
     swayidle
