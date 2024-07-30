@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   services.blocky = {
     enable = true;
     settings = {
       blocking = {
-        blackLists = {
+        denylists = {
           ads = [
             "https://adaway.org/hosts.txt"
             "https://raw.githubusercontent.com/blocklistproject/Lists/master/ads.txt"
@@ -31,10 +31,11 @@
           default = [ "8.8.8.8" "1.1.1.1" ];
         };
 
-        strategy = "parrallel_best";
+        strategy = "parallel_best";
       };
 
       bootstrapDns = {
+        upstream = "https://dns.google/dns-query";
         ips = [ "8.8.8.8" "8.8.4.4" ];
       };
 
@@ -44,8 +45,6 @@
       };
 
       connectIPVersion = "v4";
-
-      startVerifyUpsream = true;
 
       ports = {
         dns = 53;
@@ -59,4 +58,10 @@
 
   };
 
+  systemd.services.blocky = {
+    wants = [ "network-online.target" ];
+    after = [ "network-online.target" ];
+  };
+
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 }
