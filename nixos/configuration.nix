@@ -209,7 +209,6 @@ in
   environment.systemPackages = (with pkgs; [
     sops
     vim
-    btrfs-assistant
     scx
     age
     gnome-disk-utility
@@ -240,6 +239,8 @@ in
   (with pkgs-stable; [
     quickemu
     floorp
+    # FIXME does this still need to be on stable?
+    btrfs-assistant
   ]);
 
   systemd.user.services = {
