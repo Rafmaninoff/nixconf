@@ -19,6 +19,7 @@ in
       ./sops.nix
       ./ssh.nix
       ./openrgb.nix
+      ./blocky.nix
       modules/duckdns.nix
     ];
 
