@@ -243,6 +243,8 @@ in
     btrfs-assistant
   ]);
 
+  systemd.enableUnifiedCgroupHierarchy = true;
+
   systemd.user.services = {
     arrpc = {
       partOf = [ "graphical-session.target" ];
