@@ -70,7 +70,7 @@
     })
     (lutris.override {
       extraPkgs = pkgs: [
-        gnome3.adwaita-icon-theme
+        adwaita-icon-theme
         wineWowPackages.waylandFull
       ];
       extraLibraries = pkgs: [
