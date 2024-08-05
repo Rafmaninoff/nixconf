@@ -68,18 +68,33 @@ in
   time.timeZone = "America/Montevideo";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "es_UY.UTF-8";
-    LC_IDENTIFICATION = "es_UY.UTF-8";
-    LC_MEASUREMENT = "es_UY.UTF-8";
-    LC_MONETARY = "es_UY.UTF-8";
-    LC_NAME = "es_UY.UTF-8";
-    LC_NUMERIC = "es_UY.UTF-8";
-    LC_PAPER = "es_UY.UTF-8";
-    LC_TELEPHONE = "es_UY.UTF-8";
-    LC_TIME = "es_UY.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+
+    extraLocaleSettings = {
+      LC_ADDRESS = "es_UY.UTF-8";
+      LC_IDENTIFICATION = "es_UY.UTF-8";
+      LC_MEASUREMENT = "es_UY.UTF-8";
+      LC_MONETARY = "es_UY.UTF-8";
+      LC_NAME = "es_UY.UTF-8";
+      LC_NUMERIC = "es_UY.UTF-8";
+      LC_PAPER = "es_UY.UTF-8";
+      LC_TELEPHONE = "es_UY.UTF-8";
+      LC_TIME = "es_UY.UTF-8";
+    };
+
+    inputMethod = {
+      type = "fcitx5";
+      enable = true;
+      fcitx5 = {
+        waylandFrontend = true;
+        addons = with pkgs; [
+          fcitx5-mozc
+          fcitx5-material-color
+        ];
+      };
+    };
   };
 
   # Enable the X11 windowing system.
@@ -97,15 +112,6 @@ in
     variant = "";
     options = "compose:102,caps:hyper,lv3:ralt_switch,nbsp:zwnj2nb3zwj4";
   };
-
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-mozc
-      fcitx5-material-color
-    ];
-  };
-
 
   # Enable CUPS to print documents.
   services.printing.enable = false;
