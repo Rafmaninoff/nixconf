@@ -45,7 +45,6 @@ in
     enable = true;
     domains = [ "rafmaninoff" ];
     tokenFile = /run/secrets/duckdns_token;
-
   };
 
   nix.optimise = {
