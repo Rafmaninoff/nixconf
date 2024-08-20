@@ -37,7 +37,7 @@
     let inherit (self) outputs;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+      pkgs-stable = import nixpkgs-stable { inherit system; config = { allowUnfree = true; AllowUnfreePredicate = (_: true); }; };
 
       overlays = [
         rust-overlay.overlays.default
