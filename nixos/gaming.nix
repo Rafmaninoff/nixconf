@@ -57,7 +57,7 @@
     cemu
     melonDS
     jstest-gtk
-    sdl2-jstest
+    sdl-jstest
     prismlauncher
     goverlay
     mangohud
