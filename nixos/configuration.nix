@@ -239,9 +239,9 @@ in
     # firedragon
     swayidle
     scrcpy
+    rnote
   ])
-  ++
-  (with pkgs-stable; [
+  ++ (with pkgs-stable; [
     quickemu
     floorp
     # FIXME does this still need to be on stable?

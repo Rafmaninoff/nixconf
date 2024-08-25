@@ -56,6 +56,8 @@
     ryujinx
     cemu
     melonDS
+    jstest-gtk
+    sdl2-jstest
     prismlauncher
     goverlay
     mangohud
