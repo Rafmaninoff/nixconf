@@ -187,6 +187,11 @@ in
     allowUnfreePredicate = (_: true);
   };
 
+  services.nixos-cli = {
+    enable = true;
+    prebuildOptionCache = true;
+  };
+
   xdg.portal.enable = true;
 
   services.input-remapper = {

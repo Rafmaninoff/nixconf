@@ -27,13 +27,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-cli = {
+      url = "github:water-sucks/nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs =
-    { self, nixpkgs, nixpkgs-stable, chaotic, home-manager, nixos-hardware, rust-overlay, ... }@inputs:
+    { self, nixpkgs, nixpkgs-stable, chaotic, nixos-cli, home-manager, nixos-hardware, rust-overlay, ... }@inputs:
     let inherit (self) outputs;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -55,6 +60,7 @@
           modules = [
             ./nixos/configuration.nix
             chaotic.nixosModules.default
+            nixos-cli.nixosModules.nixos-cli
             ({ pkgs, ... }: {
               nixpkgs.overlays = overlays;
             })
