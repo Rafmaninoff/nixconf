@@ -245,6 +245,8 @@ in
     swayidle
     scrcpy
     rnote
+    pciutils
+    usbutils
   ])
   ++ (with pkgs-stable; [
     quickemu

@@ -58,6 +58,7 @@
     melonDS
     jstest-gtk
     sdl-jstest
+    evtest-qt
     prismlauncher
     goverlay
     mangohud
