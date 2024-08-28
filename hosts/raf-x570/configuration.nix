@@ -5,23 +5,23 @@
 { config, pkgs, lib, inputs, ... }:
 let
   pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux;
-  kmonad = (import ./kmonad.nix) pkgs;
+  kmonad = (import ../../nixosModules/kmonad.nix) pkgs;
 in
 {
   imports =
     [
       ./hardware-configuration.nix
-      ./ananicy.nix
-      ./0t1.nix
-      ./gaming.nix
-      ./fonts.nix
-      ./sudo.nix
-      ./sops.nix
-      ./ssh.nix
-      ./openrgb.nix
-      ./blocky.nix
-      modules/duckdns.nix
-      modules/waydroid.nix
+      ../../nixosModules/ananicy.nix
+      ../../nixosModules/0t1.nix
+      ../../nixosModules/gaming.nix
+      ../../nixosModules/fonts.nix
+      ../../nixosModules/sudo.nix
+      ../../nixosModules/sops.nix
+      ../../nixosModules/ssh.nix
+      ../../nixosModules/openrgb.nix
+      ../../nixosModules/blocky.nix
+      ../../nixosModules/duckdns.nix
+      ../../nixosModules/waydroid.nix
     ];
 
   # Bootloader.
@@ -57,7 +57,7 @@ in
   };
 
 
-  networking.hostName = "nixos-raf"; # Define your hostname.
+  networking.hostName = "raf-x570"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary

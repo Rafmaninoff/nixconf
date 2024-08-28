@@ -52,13 +52,13 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        "nixos-raf" = nixpkgs.lib.nixosSystem {
+        "raf-x570" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           specialArgs = { inherit pkgs-stable; };
           # > Our main nixos configuration file <
           modules = [
-            ./nixos/configuration.nix
+            ./hosts/raf-x570/configuration.nix
             chaotic.nixosModules.default
             nixos-cli.nixosModules.nixos-cli
             ({ pkgs, ... }: {
@@ -71,7 +71,7 @@
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
-        "raf@nixos-raf" = home-manager.lib.homeManagerConfiguration {
+        "raf@raf-x570" = home-manager.lib.homeManagerConfiguration {
           pkgs =
             nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs; };
