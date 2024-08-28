@@ -14,14 +14,13 @@ in
       ../../nixosModules/ananicy.nix
       ../../nixosModules/0t1.nix
       ../../nixosModules/gaming.nix
-      ../../nixosModules/fonts.nix
       ../../nixosModules/sudo.nix
       ../../nixosModules/sops.nix
       ../../nixosModules/ssh.nix
       ../../nixosModules/openrgb.nix
       ../../nixosModules/blocky.nix
       ../../nixosModules/duckdns.nix
-      ../../nixosModules/waydroid.nix
+      ../../nixosModules/desktop
     ];
 
   # Bootloader.

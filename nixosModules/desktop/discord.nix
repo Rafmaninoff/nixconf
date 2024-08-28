@@ -1,10 +1,7 @@
 { pkgs, lib, config }:
 {
 
-  options.has.discord = lib.mkEnableOption {
-    description = "enable discord and related things";
-    default = true;
-  };
+  options.has.discord = lib.mkEnableOption "enable discord and related things";
 
   config = lib.mkIf config.has.discord {
     environment.systemPackages = with pkgs; [ vesktop arrpc ];
