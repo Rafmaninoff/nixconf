@@ -1,4 +1,4 @@
-{ pkgs, lib, config }:
+{ pkgs, lib, config, ... }:
 {
 
   options.has.discord = lib.mkEnableOption "enable discord and related things";

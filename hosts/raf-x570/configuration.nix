@@ -216,7 +216,7 @@ in
       enable = true;
       extraArgs = "--keep-since 15d --keep 5";
     };
-    flake = "/home/raf/env-nixos";
+    flake = "/home/raf/nixconf";
   };
 
   environment.systemPackages = (with pkgs; [
