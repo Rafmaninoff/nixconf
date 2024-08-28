@@ -21,6 +21,7 @@ in
       ./openrgb.nix
       ./blocky.nix
       modules/duckdns.nix
+      modules/waydroid.nix
     ];
 
   # Bootloader.
@@ -46,6 +47,9 @@ in
     domains = [ "rafmaninoff" ];
     tokenFile = /run/secrets/duckdns_token;
   };
+
+  has.waydroid = true;
+
 
   nix.optimise = {
     automatic = true;
