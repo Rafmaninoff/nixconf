@@ -4,6 +4,7 @@
     ./waydroid.nix
     ./fonts.nix
     ./discord.nix
+    ./gaming.nix
   ];
 
   has.discord = lib.mkDefault true;
