@@ -16,11 +16,11 @@ in
       ../../nixosModules/gaming.nix
       ../../nixosModules/sudo.nix
       ../../nixosModules/sops.nix
-      ../../nixosModules/ssh.nix
       ../../nixosModules/openrgb.nix
       ../../nixosModules/blocky.nix
       ../../nixosModules/duckdns.nix
       ../../nixosModules/desktop
+      ../../nixosModules/net
     ];
 
   # Bootloader.
