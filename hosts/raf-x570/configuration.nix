@@ -21,22 +21,10 @@ in
       ../../nixosModules/duckdns.nix
       ../../nixosModules/desktop
       ../../nixosModules/net
+      ../../nixosModules/common
     ];
 
   # Bootloader.
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot = {
-    enable = true;
-    configurationLimit = 30;
-    netbootxyz = {
-      enable = true;
-      sortKey = "y-netbootxyz.conf";
-    };
-    memtest86 = {
-      enable = true;
-      sortKey = "z-memtest86.conf";
-    };
-  };
 
   #why is this not enabled by default yet?
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
