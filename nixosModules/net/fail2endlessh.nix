@@ -8,7 +8,7 @@ in
     enable = mkOption {
       description = "Enable fail2ban with an endlesh jail, defaults to enabled if ssh is enabled";
       type = types.bool;
-      default = config.serveces.sshd.enable;
+      default = config.services.sshd.enable;
     };
 
     sshdPort = mkOption {
@@ -83,17 +83,4 @@ in
         blocktype = blackhole
       '';
   };
-
-  services.openssh = {
-    enable = true;
-    ports = [ 22 ];
-    openFirewall = true;
-    settings = {
-      PasswordAuthentication = true;
-      UseDns = true;
-      X11Forwarding = false;
-      PermitRootLogin = "no";
-    };
-  };
-
 }

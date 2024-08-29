@@ -1,12 +1,9 @@
 { pkgs, config, lib, ... }:
 with lib;
-let
-  cfg = config.has.ssh;
-in
 {
   options.has.ssh = mkEnableOption "enable sshd";
 
-  config = mkIf cfg.has.ssh {
+  config = mkIf config.has.ssh {
     services.openssh = {
       enable = true;
       ports = mkDefault [ 22 ];

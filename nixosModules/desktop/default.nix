@@ -9,6 +9,7 @@
 
   has.discord = lib.mkDefault true;
   has.waydroid = lib.mkDefault true;
+  has.gaming = lib.mkDefault true;
 
 
 

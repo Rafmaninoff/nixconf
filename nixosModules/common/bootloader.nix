@@ -1,5 +1,6 @@
 { pkgs, lib, config, ... }:
 {
+  boot.initrd.systemd.enable = true;
   boot.initrd.unl0kr.enable = true;
   boot.loader = {
     efi.canTouchEfiVariables = true;

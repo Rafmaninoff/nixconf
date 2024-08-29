@@ -13,7 +13,6 @@ in
       ./hardware-configuration.nix
       ../../nixosModules/ananicy.nix
       ../../nixosModules/0t1.nix
-      ../../nixosModules/gaming.nix
       ../../nixosModules/sudo.nix
       ../../nixosModules/sops.nix
       ../../nixosModules/openrgb.nix
