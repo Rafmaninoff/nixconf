@@ -44,22 +44,6 @@ in
   # Set your time zone.
   time.timeZone = "America/Montevideo";
 
-  # Select internationalisation properties.
-
-  i18n = {
-
-    inputMethod = {
-      type = "fcitx5";
-      enable = true;
-      fcitx5 = {
-        waylandFrontend = true;
-        addons = with pkgs; [
-          fcitx5-mozc
-          fcitx5-material-color
-        ];
-      };
-    };
-  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;

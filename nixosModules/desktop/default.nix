@@ -5,13 +5,12 @@
     ./fonts.nix
     ./discord.nix
     ./gaming.nix
+    ./fcitx.nix
   ];
 
   has.discord = lib.mkDefault true;
   has.waydroid = lib.mkDefault true;
   has.gaming = lib.mkDefault true;
-
-
-
+  has.fcitx = lib.mkDefault true;
 
 }
