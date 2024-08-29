@@ -27,7 +27,6 @@ in
   # Bootloader.
 
   #why is this not enabled by default yet?
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   services.duckdns = {
     enable = true;
@@ -36,13 +35,6 @@ in
   };
 
   has.waydroid = true;
-
-
-  nix.optimise = {
-    automatic = true;
-    dates = [ "00:00:00" ];
-  };
-
 
   networking.hostName = "raf-x570"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -169,18 +161,11 @@ in
     };
   };
 
-  #use lix as nix impl, mostly so cached error is an error of the past.
-  nix.package = pkgs.lix;
 
   # Allow unfree packages
   nixpkgs.config = {
     allowUnfree = true;
     allowUnfreePredicate = (_: true);
-  };
-
-  services.nixos-cli = {
-    enable = true;
-    prebuildOptionCache = true;
   };
 
   xdg.portal.enable = true;

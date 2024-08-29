@@ -2,7 +2,7 @@
 {
   imports = [
     ./bootloader.nix
-
+    ./nixthings.nix
   ];
 
 }
