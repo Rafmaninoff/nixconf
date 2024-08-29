@@ -3,6 +3,7 @@
   imports = [
     ./bootloader.nix
     ./nixthings.nix
+    ./locale.nix
   ];
 
 }

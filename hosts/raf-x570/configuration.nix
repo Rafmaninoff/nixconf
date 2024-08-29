@@ -23,10 +23,6 @@ in
       ../../nixosModules/common
     ];
 
-  # Bootloader.
-
-  #why is this not enabled by default yet?
-
   services.duckdns = {
     enable = true;
     domains = [ "rafmaninoff" ];
@@ -91,7 +87,7 @@ in
   services.xserver.xkb = {
     layout = "us";
     variant = "";
-    options = "compose:102,caps:hyper,lv3:ralt_switch,nbsp:zwnj2nb3zwj4";
+    options = "compose:102,caps:hyper,lv3:ralt_switch";
   };
 
   # Enable CUPS to print documents.
