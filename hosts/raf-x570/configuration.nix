@@ -29,8 +29,6 @@ in
     tokenFile = /run/secrets/duckdns_token;
   };
 
-  has.waydroid = true;
-
   networking.hostName = "raf-x570"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -140,23 +138,6 @@ in
     enable = true;
   };
 
-  boot.binfmt.registrations.appimage = {
-    wrapInterpreterInShell = false;
-    interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-    recognitionType = "magic";
-    offset = 0;
-    mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-    magicOrExtension = ''\x7fELF....AI\x02'';
-  };
-
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable = true;
-      extraArgs = "--keep-since 15d --keep 5";
-    };
-    flake = "/home/raf/nixconf";
-  };
 
   environment.systemPackages = (with pkgs; [
     sops

@@ -4,6 +4,9 @@
     ./bootloader.nix
     ./nixthings.nix
     ./locale.nix
+    ./appimage.nix
   ];
+
+  has.appimage = lib.mkDefault true;
 
 }
