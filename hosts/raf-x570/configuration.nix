@@ -27,6 +27,8 @@ in {
     tokenFile = /run/secrets/duckdns_token;
   };
 
+  has.javawrappers = true;
+
   networking.hostName = "raf-x570"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
