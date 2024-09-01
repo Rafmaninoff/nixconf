@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ pkgs, lib, config, ... }: {
 
   programs.neovim = {
     enable = true;
@@ -6,7 +6,9 @@
     vimdiffAlias = true;
     withPython3 = true;
     extraPackages = with pkgs; [
-      (rust-bin.stable.latest.default.override { extensions = [ "rust-src" "rust-analyzer" "rustfmt" "clippy" ]; })
+      (rust-bin.stable.latest.default.override {
+        extensions = [ "rust-src" "rust-analyzer" "rustfmt" "clippy" ];
+      })
       lua5_1
       lua51Packages.luarocks-nix
       gcc
@@ -41,7 +43,6 @@
       haskellPackages.haskell-debug-adapter
       haskellPackages.ghci-dap
 
-
       #formatters
       alejandra
       nixfmt-classic
@@ -54,6 +55,7 @@
       shfmt
     ];
 
+    plugins = with pkgs.vimPlugins; [ markdown-preview-nvim ];
 
   };
 }

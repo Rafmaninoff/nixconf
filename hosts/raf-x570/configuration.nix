@@ -6,22 +6,20 @@
 let
   pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux;
   kmonad = (import ../../nixosModules/kmonad.nix) pkgs;
-in
-{
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../nixosModules/ananicy.nix
-      ../../nixosModules/0t1.nix
-      ../../nixosModules/sudo.nix
-      ../../nixosModules/sops.nix
-      ../../nixosModules/openrgb.nix
-      ../../nixosModules/blocky.nix
-      ../../nixosModules/duckdns.nix
-      ../../nixosModules/desktop
-      ../../nixosModules/net
-      ../../nixosModules/common
-    ];
+in {
+  imports = [
+    ./hardware-configuration.nix
+    ../../nixosModules/ananicy.nix
+    ../../nixosModules/0t1.nix
+    ../../nixosModules/sudo.nix
+    ../../nixosModules/sops.nix
+    ../../nixosModules/openrgb.nix
+    ../../nixosModules/blocky.nix
+    ../../nixosModules/duckdns.nix
+    ../../nixosModules/desktop
+    ../../nixosModules/net
+    ../../nixosModules/common
+  ];
 
   services.duckdns = {
     enable = true;
@@ -42,15 +40,15 @@ in
   # Set your time zone.
   time.timeZone = "America/Montevideo";
 
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.displayManager.sddm = { enable = true; wayland.enable = true; };
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
   services.desktopManager.plasma6.enable = true;
 
-  programs.hyprland = {
-    enable = true;
-  };
+  programs.hyprland = { enable = true; };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -104,11 +102,10 @@ in
 
   users.groups = { uinput = { }; };
 
-  services.udev.extraRules =
-    ''
-      # KMonad user access to /dev/uinput
-      KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
-    '';
+  services.udev.extraRules = ''
+    # KMonad user access to /dev/uinput
+    KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
+  '';
 
   programs.adb.enable = true;
 
@@ -125,7 +122,6 @@ in
     };
   };
 
-
   # Allow unfree packages
   nixpkgs.config = {
     allowUnfree = true;
@@ -134,10 +130,7 @@ in
 
   xdg.portal.enable = true;
 
-  services.input-remapper = {
-    enable = true;
-  };
-
+  services.input-remapper = { enable = true; };
 
   environment.systemPackages = (with pkgs; [
     sops
@@ -168,14 +161,13 @@ in
     rnote
     pciutils
     usbutils
-  ])
-  ++ (with pkgs-stable; [
+    stremio
+  ]) ++ (with pkgs-stable; [
     quickemu
     floorp
     # FIXME does this still need to be on stable?
     btrfs-assistant
   ]);
-
 
   services.mullvad-vpn = {
     enable = true;
@@ -213,10 +205,7 @@ in
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall = {
-    enable = true;
-  };
-
+  networking.firewall = { enable = true; };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
