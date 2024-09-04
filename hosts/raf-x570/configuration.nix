@@ -68,7 +68,7 @@ in
     powerOnBoot = true;
   };
 
-  services.blueman.enable = true;
+  # services.blueman.enable = true;
 
   services.flatpak.enable = true;
 
@@ -96,11 +96,6 @@ in
     description = "raf";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" "input" "uinput" "adbusers" ];
-    packages = with pkgs; [
-      firefox
-      microsoft-edge
-      #  thunderbird
-    ];
   };
 
   users.groups = { uinput = { }; };
@@ -136,9 +131,7 @@ in
   services.input-remapper = { enable = true; };
 
   environment.systemPackages = (with pkgs; [
-    appimage-run # move me to module
     kmonad
-  ]) ++ (with pkgs-stable; [
   ]);
 
   services.mullvad-vpn = {

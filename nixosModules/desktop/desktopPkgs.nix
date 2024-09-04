@@ -36,6 +36,8 @@ in
         btrfs-assistant
         quickemu
         floorp
+        firefox
+        microsoft-edge
       ])
       ++ (with pkgs-stable; [
         libreoffice-qt
