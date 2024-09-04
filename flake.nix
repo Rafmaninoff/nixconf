@@ -1,17 +1,12 @@
 {
-  description = "Your new nix config";
-
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
-    # Home manager
     home-manager.url = "github:nix-community/home-manager";
-    #home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # TODO: Add any other flake you might need
     nixos-hardware.url = "github:nixos/nixos-hardware";
     rust-overlay.url = "github:oxalica/rust-overlay";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -46,22 +41,18 @@
     { self, nixpkgs, nixpkgs-stable, chaotic, nixos-cli, home-manager, nixos-hardware, rust-overlay, kmonad, ... }@inputs:
     let inherit (self) outputs;
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-stable = import nixpkgs-stable { inherit system; config = { allowUnfree = true; AllowUnfreePredicate = (_: true); }; };
+      pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; allowUnfreePredicate = (_: true); }; };
+      pkgs-stable = import nixpkgs-stable { inherit system; config = { allowUnfree = true; allowUnfreePredicate = (_: true); }; };
 
       overlays = [
         rust-overlay.overlays.default
       ];
     in
     {
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         "raf-x570" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           specialArgs = { inherit pkgs-stable; };
-          # > Our main nixos configuration file <
           modules = [
             ./hosts/raf-x570/configuration.nix
             chaotic.nixosModules.default
@@ -74,14 +65,10 @@
         };
       };
 
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
       homeConfigurations = {
         "raf@raf-x570" = home-manager.lib.homeManagerConfiguration {
-          pkgs =
-            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          pkgs = pkgs;
           extraSpecialArgs = { inherit inputs outputs; };
-          # > Our main home-manager configuration file <
           modules = [
             ./home/home.nix
             ({ pkgs, ... }: {
