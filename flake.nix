@@ -32,13 +32,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    kmonad = {
+      url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs =
-    { self, nixpkgs, nixpkgs-stable, chaotic, nixos-cli, home-manager, nixos-hardware, rust-overlay, ... }@inputs:
+    { self, nixpkgs, nixpkgs-stable, chaotic, nixos-cli, home-manager, nixos-hardware, rust-overlay, kmonad, ... }@inputs:
     let inherit (self) outputs;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -64,6 +69,7 @@
             ({ pkgs, ... }: {
               nixpkgs.overlays = overlays;
             })
+            kmonad.nixosModules.default
           ];
         };
       };
