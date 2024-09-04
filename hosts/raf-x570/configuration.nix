@@ -6,7 +6,8 @@
 let
   pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux;
   kmonad = (import ../../nixosModules/kmonad.nix) pkgs;
-in {
+in
+{
   imports = [
     ./hardware-configuration.nix
     ../../nixosModules/ananicy.nix
@@ -135,40 +136,9 @@ in {
   services.input-remapper = { enable = true; };
 
   environment.systemPackages = (with pkgs; [
-    sops
-    vim
-    scx
-    age
-    gnome-disk-utility
-    deluge
-    wget
-    flameshot
-    clac
-    vlc
-    appimage-run
-    piper
-    libreoffice-qt
-    hunspell
-    hunspellDicts.es_ES
-    hunspellDicts.en_GB-ise
+    appimage-run # move me to module
     kmonad
-    signal-desktop
-    filelight
-    telegram-desktop
-    zapzap
-    nchat
-    # firedragon
-    swayidle
-    scrcpy
-    rnote
-    pciutils
-    usbutils
-    stremio
   ]) ++ (with pkgs-stable; [
-    quickemu
-    floorp
-    # FIXME does this still need to be on stable?
-    btrfs-assistant
   ]);
 
   services.mullvad-vpn = {
