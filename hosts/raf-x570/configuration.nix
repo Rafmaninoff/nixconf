@@ -3,10 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, lib, inputs, ... }:
-let
-  pkgs-stable = inputs.nixpkgs-stable.legacyPackages.x86_64-linux;
-  kmonad = (import ../../nixosModules/kmonad.nix) pkgs;
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -95,15 +91,9 @@ in
     isNormalUser = true;
     description = "raf";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "input" "uinput" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "adbusers" ];
   };
 
-  users.groups = { uinput = { }; };
-
-  services.udev.extraRules = ''
-    # KMonad user access to /dev/uinput
-    KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
-  '';
 
   programs.adb.enable = true;
 
@@ -129,10 +119,6 @@ in
   xdg.portal.enable = true;
 
   services.input-remapper = { enable = true; };
-
-  environment.systemPackages = (with pkgs; [
-    kmonad
-  ]);
 
   services.mullvad-vpn = {
     enable = true;
