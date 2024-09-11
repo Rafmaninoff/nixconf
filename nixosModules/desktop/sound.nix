@@ -8,10 +8,6 @@ with lib;
   };
 
   config = mkIf config.has.sound {
-<<<<<<< HEAD
-=======
-
->>>>>>> b8974eba8af5e483142377d6beab67e10e62bcd1
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
