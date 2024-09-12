@@ -21,6 +21,14 @@
       has.waydroid = lib.mkDefault true;
       has.gaming = lib.mkDefault true;
       has.fcitx = lib.mkDefault true;
+
+      #keymap options
+      services.xserver.xkb = lib.mkDefault {
+        layout = "us";
+        variant = "";
+        options = "compose:102,caps:hyper,lv3:ralt_switch";
+      };
+
     }
     (lib.mkIf config.has.defaultDesktopPackages {
       environment.systemPackages =

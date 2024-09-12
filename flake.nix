@@ -41,25 +41,22 @@
     { self, nixpkgs, nixpkgs-stable, chaotic, nixos-cli, home-manager, nixos-hardware, rust-overlay, kmonad, ... }@inputs:
     let inherit (self) outputs;
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; allowUnfreePredicate = (_: true); }; };
-      pkgs-stable = import nixpkgs-stable { inherit system; config = { allowUnfree = true; allowUnfreePredicate = (_: true); }; };
-
-      overlays = [
+      myOverlays = [
         rust-overlay.overlays.default
       ];
+
+      pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; }; overlays = myOverlays; };
+      pkgs-stable = import nixpkgs-stable { inherit system; config = { allowUnfree = true; }; overlays = myOverlays; };
+
     in
     {
       nixosConfigurations = {
         "raf-x570" = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          specialArgs = { inherit pkgs-stable; };
+          specialArgs = { inherit inputs outputs; inherit pkgs-stable; };
           modules = [
             ./hosts/raf-x570/configuration.nix
             chaotic.nixosModules.default
             nixos-cli.nixosModules.nixos-cli
-            ({ pkgs, ... }: {
-              nixpkgs.overlays = overlays;
-            })
             kmonad.nixosModules.default
           ];
         };
@@ -71,9 +68,6 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
             ./home/home.nix
-            ({ pkgs, ... }: {
-              nixpkgs.overlays = overlays;
-            })
           ];
         };
       };

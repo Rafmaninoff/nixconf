@@ -49,12 +49,6 @@
 
   programs.hyprland = { enable = true; };
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-    options = "compose:102,caps:hyper,lv3:ralt_switch";
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = false;
