@@ -97,11 +97,6 @@
     enableExcludeWrapper = true;
   };
 
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [ ];
-  };
-
   services.ratbagd.enable = true;
 
   programs.zsh.enable = true;

@@ -23,6 +23,14 @@
     flake = "/home/raf/nixconf";
   };
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+
+    ];
+  };
+
+  #applies to the instance of nixpkgs which defined the current nixos configuration
   nixpkgs.config.allowUnfree = true;
 
 }
