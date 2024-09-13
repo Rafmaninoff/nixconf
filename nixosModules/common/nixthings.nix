@@ -23,4 +23,6 @@
     flake = "/home/raf/nixconf";
   };
 
+  nixpkgs.config.allowUnfree = true;
+
 }

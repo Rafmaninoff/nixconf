@@ -88,12 +88,6 @@
     };
   };
 
-  # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = (_: true);
-  };
-
   xdg.portal.enable = true;
 
   services.input-remapper = { enable = true; };
