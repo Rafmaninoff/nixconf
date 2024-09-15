@@ -7,7 +7,7 @@
   networking.firewall = {
     enable = true;
     allowedTCPPortRanges = [ ];
-    allowedTCPPPorts = [ ];
+    allowedTCPPorts = [ ];
     allowedUDPPortRanges = [ ];
     allowedUDPPorts = [ ];
   };
