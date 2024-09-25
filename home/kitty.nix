@@ -20,6 +20,6 @@
       window_padding_width = 2;
 
     };
-    theme = "Tokyo Night";
+    themeFile = "tokyo_night_night";
   };
 }
