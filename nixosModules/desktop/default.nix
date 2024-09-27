@@ -16,7 +16,7 @@
 
 
   config = lib.mkMerge [
-    {
+    ({
       has.discord = lib.mkDefault true;
       has.waydroid = lib.mkDefault true;
       has.gaming = lib.mkDefault true;
@@ -29,7 +29,7 @@
         options = "compose:102,caps:hyper,lv3:ralt_switch";
       };
 
-    }
+    })
     (lib.mkIf config.has.defaultDesktopPackages {
       environment.systemPackages =
         (with pkgs; [
