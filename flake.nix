@@ -11,6 +11,7 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     arrpc = {
       url = "github:notashelf/arrpc-flake";
@@ -58,6 +59,7 @@
             chaotic.nixosModules.default
             nixos-cli.nixosModules.nixos-cli
             kmonad.nixosModules.default
+            inputs.nix-flatpak.nixosModules.nix-flatpak
           ];
         };
       };
