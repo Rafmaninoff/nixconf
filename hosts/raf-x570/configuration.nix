@@ -43,13 +43,19 @@
 
   programs.hyprland = { enable = true; };
 
+  has.flatpak = {
+    enable = true;
+    flatpaks = [
+      "org.jdownloader.JDownloader"
+      "us.zoom.Zoom"
+    ];
+  };
 
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
   };
 
-  services.flatpak.enable = true;
   users.users.raf = {
     isNormalUser = true;
     description = "raf";
@@ -59,8 +65,6 @@
 
 
   programs.adb.enable = true;
-
-  xdg.portal.enable = true;
 
   services.input-remapper = { enable = true; };
 

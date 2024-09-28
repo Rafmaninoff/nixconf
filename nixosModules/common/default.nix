@@ -7,6 +7,7 @@
       ./appimage.nix
       ./java.nix
       ./podman.nix
+      ./flatpak.nix
     ];
 
   has.appimage = lib.mkDefault true;
