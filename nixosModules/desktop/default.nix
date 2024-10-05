@@ -58,6 +58,7 @@
           floorp
           firefox
           microsoft-edge
+          unrar
         ])
         ++ (with pkgs-stable; [
           libreoffice-qt
