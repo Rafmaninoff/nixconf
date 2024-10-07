@@ -72,6 +72,7 @@
         steamtinkerlaunch
         antimicrox
         protonup
+        protontricks
         protonup-qt
         (wrapOBS {
           plugins = with obs-studio-plugins; [
