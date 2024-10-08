@@ -14,7 +14,7 @@ in
 
     home.packages = [ pkgs.clac ];
     xdg.configFile."clac/words".text = ''
-      mc_toStacks "dup 64 % dup . - 64 / ,"
+      mc_toStacks "dup 64 % dup . - 64 / , 100 / +"
     '';
   };
 }
