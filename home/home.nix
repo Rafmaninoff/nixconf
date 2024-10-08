@@ -34,6 +34,7 @@
     ripgrep
   ];
 
+  xdg.enable = true;
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
