@@ -12,6 +12,7 @@
     ./zsh.nix
     ./kitty.nix
     ./hyprland.nix
+    homeModules/cli
   ];
 
   home = {
