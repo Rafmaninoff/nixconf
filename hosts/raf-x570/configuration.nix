@@ -54,7 +54,11 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+    package = pkgs.bluez5-experimental;
+    settings.Policy.AutoEnable = "true";
   };
+
+  services.blueman.enable = true;
 
   users.users.raf = {
     isNormalUser = true;

@@ -13,6 +13,10 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" "amd_iommu" ];
 
+  boot.extraModprobeConfig = ''
+    options btusb enable_autosuspend=n
+  '';
+
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot.kernelParams = [ "mitigations=off" "pcie_aspm=off" ];
 
@@ -164,5 +168,9 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   nix.settings.max-jobs = lib.mkDefault 12;
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = true;
+
+  hardware.enableAllFirmware = true;
+
+
 }
