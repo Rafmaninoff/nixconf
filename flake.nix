@@ -9,7 +9,7 @@
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    chaotic.url = "github:chaotic-cx/nyx/99820d0879145c40652598a80540692505eebb23";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
