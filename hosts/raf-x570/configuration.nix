@@ -60,6 +60,9 @@
 
   services.blueman.enable = true;
 
+  has.ssh = true;
+  services.openssh.settings.PasswordAuthentication = true;
+
   users.users.raf = {
     isNormalUser = true;
     description = "raf";
