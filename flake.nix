@@ -63,7 +63,7 @@
             ./hosts/raf-x570/configuration.nix
             chaotic.nixosModules.default
             nixos-cli.nixosModules.nixos-cli
-            kmonad.nixosModules.default
+            # kmonad.nixosModules.default
             inputs.nix-flatpak.nixosModules.nix-flatpak
           ];
         };
