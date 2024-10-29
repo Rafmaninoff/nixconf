@@ -51,6 +51,8 @@
     ];
   };
 
+  is.remotebuilder = true;
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;

@@ -8,6 +8,7 @@
       ./java.nix
       ./podman.nix
       ./flatpak.nix
+      ./remotebuild.nix
     ];
 
   has.appimage = lib.mkDefault true;
