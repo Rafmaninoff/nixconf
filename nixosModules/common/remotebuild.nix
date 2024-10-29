@@ -12,7 +12,7 @@ in
 
   config = mkIf config.is.remotebuilder {
     users.users.remotebuild = {
-      isNormalUser = true;
+      isSystemUser = true;
       createHome = false;
       group = "remotebuild";
 
