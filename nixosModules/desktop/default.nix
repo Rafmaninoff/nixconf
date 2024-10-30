@@ -6,6 +6,7 @@
     ./discord.nix
     ./gaming.nix
     ./fcitx.nix
+    ./input-leap.nix
   ];
 
   options.has.defaultDesktopPackages = lib.mkOption {
