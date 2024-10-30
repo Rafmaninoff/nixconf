@@ -59,6 +59,7 @@
           firefox
           microsoft-edge
           unrar
+          input-leap
         ])
         ++ (with pkgs-stable; [
           libreoffice-qt
