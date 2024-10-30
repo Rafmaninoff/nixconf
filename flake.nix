@@ -67,10 +67,29 @@
             inputs.nix-flatpak.nixosModules.nix-flatpak
           ];
         };
+        "sb2" = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; inherit pkgs-stable; };
+          modules = [
+            ./hosts/sb2/configuration.nix
+            chaotic.nixosModules.default
+            nixos-cli.nixosModules.nixos-cli
+            # kmonad.nixosModules.default
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+            inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
+          ];
+        };
       };
 
       homeConfigurations = {
         "raf@raf-x570" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [
+            ./home/home.nix
+          ];
+        };
+
+        "raf@sb2" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
