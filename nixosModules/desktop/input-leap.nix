@@ -12,7 +12,9 @@ in
 
   config = mkIf cfg {
     environment.systemPackages = [ pkgs.input-leap ];
-    allowedTCPPorts = [ 24800 ];
-    allowedUDPPorts = [ 24800 ];
+    networking.firewall = {
+      allowedTCPPorts = [ 24800 ];
+      allowedUDPPorts = [ 24800 ];
+    };
   };
 }
