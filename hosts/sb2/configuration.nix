@@ -29,6 +29,11 @@
     config.Touchscreen.DisableOnStylus = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    maliit-keyboard
+    maliit-framework
+  ];
+
   networking.hostName = "sb2"; # Define your hostname.
 
   networking.networkmanager.enable = true;
