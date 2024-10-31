@@ -26,7 +26,7 @@
 
   services.iptsd = {
     enable = true;
-    config.Touch.DisableOnStylus = true;
+    config.Touchscreen.DisableOnStylus = true;
   };
 
   networking.hostName = "sb2"; # Define your hostname.
