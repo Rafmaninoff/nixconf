@@ -32,7 +32,10 @@
   environment.systemPackages = with pkgs; [
     maliit-keyboard
     maliit-framework
+    powertop
   ];
+
+  microsoft-surface.surface-control.enable = true;
 
   networking.hostName = "sb2"; # Define your hostname.
 
@@ -70,7 +73,7 @@
     isNormalUser = true;
     description = "raf";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "input" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "adbusers" "surface-control" ];
   };
 
 
