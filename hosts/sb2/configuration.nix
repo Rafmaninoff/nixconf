@@ -24,6 +24,11 @@
   has.ssh = true;
   services.openssh.settings.PasswordAuthentication = true;
 
+  services.iptsd = {
+    enable = true;
+    config.Touch.DisableOnStylus = true;
+  };
+
   networking.hostName = "sb2"; # Define your hostname.
 
   networking.networkmanager.enable = true;
