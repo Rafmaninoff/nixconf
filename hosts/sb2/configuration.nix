@@ -62,12 +62,7 @@
 
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = true;
-    package = pkgs.bluez5-experimental;
-    settings.Policy.AutoEnable = "true";
   };
-
-  services.blueman.enable = true;
 
   users.users.raf = {
     isNormalUser = true;
@@ -75,19 +70,6 @@
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" "input" "adbusers" "surface-control" ];
   };
-
-
-  programs.adb.enable = true;
-
-  services.input-remapper = { enable = true; };
-
-  services.mullvad-vpn = {
-    enable = true;
-    enableExcludeWrapper = true;
-  };
-
-  programs.zsh.enable = true;
-  programs.kdeconnect.enable = true;
 
 
   # Some programs need SUID wrappers, can be configured further or are
