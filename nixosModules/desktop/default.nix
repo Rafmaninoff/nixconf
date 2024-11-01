@@ -27,7 +27,7 @@
       services.xserver.xkb = lib.mkDefault {
         layout = "us";
         variant = "";
-        options = "compose:102,caps:hyper,lv3:ralt_switch";
+        options = "compose:102,compose:menu,caps:hyper,lv3:ralt_switch";
       };
 
     })
