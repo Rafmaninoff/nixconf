@@ -35,8 +35,6 @@
     powertop
   ];
 
-  microsoft-surface.surface-control.enable = true;
-
   networking.hostName = "sb2"; # Define your hostname.
 
   networking.networkmanager.enable = true;
