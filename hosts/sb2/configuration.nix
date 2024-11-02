@@ -33,6 +33,7 @@
     maliit-keyboard
     maliit-framework
     powertop
+    intel-gpu-tools
   ];
 
   networking.hostName = "sb2"; # Define your hostname.

@@ -60,6 +60,9 @@
           firefox
           microsoft-edge
           unrar
+          krita
+          gimp
+          inkscape
         ])
         ++ (with pkgs-stable; [
           libreoffice-qt
