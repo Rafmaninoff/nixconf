@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, pkgs-stable, lib, config, ... }:
 {
 
   options.has.gaming = lib.mkEnableOption "enable gaming";
@@ -56,12 +56,11 @@
         };
       };
 
-      environment.systemPackages = with pkgs; [
+      environment.systemPackages = (with pkgs; [
         vulkan-tools
         gpu-viewer
         ckan
         ryujinx
-        cemu
         melonDS
         jstest-gtk
         sdl-jstest
@@ -89,7 +88,9 @@
 
           ];
         })
-      ];
+      ]) ++ (with pkgs-stable; [
+        cemu
+      ]);
 
       programs.gamemode = {
         enable = true;
