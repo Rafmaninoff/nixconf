@@ -29,6 +29,8 @@
     config.Touchscreen.DisableOnStylus = true;
   };
 
+  services.thermald.enable = true;
+
   environment.systemPackages = with pkgs; [
     maliit-keyboard
     maliit-framework
