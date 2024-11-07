@@ -53,6 +53,8 @@
 
   is.remotebuilder = true;
 
+  has.avahi = true;
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
