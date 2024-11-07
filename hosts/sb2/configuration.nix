@@ -36,6 +36,7 @@
     maliit-framework
     powertop
     intel-gpu-tools
+    equibop
   ];
 
   networking.hostName = "sb2"; # Define your hostname.
