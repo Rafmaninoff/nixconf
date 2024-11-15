@@ -7,7 +7,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-hardware.url = "github:nixos/nixos-hardware";
+    nixos-hardware.url = "github:nixos/nixos-hardware/1b0b927860d7eb367ee6a3123ddeb7a8e24bd836";
     rust-overlay.url = "github:oxalica/rust-overlay";
     chaotic.url = "github:chaotic-cx/nyx/99820d0879145c40652598a80540692505eebb23";
 
