@@ -8,7 +8,7 @@
   networking.firewall = {
     enable = true;
     allowedTCPPortRanges = [ ];
-    allowedTCPPorts = [ ];
+    allowedTCPPorts = [ 4656 ];
     allowedUDPPortRanges = [ ];
     allowedUDPPorts = [ ];
   };
