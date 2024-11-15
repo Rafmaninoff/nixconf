@@ -66,6 +66,7 @@
   hardware.bluetooth = {
     enable = true;
   };
+  services.blueman.enable = true;
 
   users.users.raf = {
     isNormalUser = true;
