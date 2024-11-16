@@ -53,6 +53,8 @@
 
   is.remotebuilder = true;
 
+  is.sunshine-host = true;
+
   has.avahi = true;
 
   hardware.bluetooth = {

@@ -7,6 +7,7 @@
     ./gaming.nix
     ./fcitx.nix
     ./input-leap.nix
+    ./sunshine-moonlight.nix
   ];
 
   options.has.defaultDesktopPackages = lib.mkOption {
