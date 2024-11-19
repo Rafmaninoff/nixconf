@@ -64,7 +64,7 @@
           krita
           gimp
           inkscape
-          nitroshare
+          obsidian
         ])
         ++ (with pkgs-stable; [
           libreoffice-qt
