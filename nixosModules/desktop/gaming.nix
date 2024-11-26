@@ -62,6 +62,7 @@
         ckan
         ryujinx
         melonDS
+        dolphin-emu
         jstest-gtk
         sdl-jstest
         evtest-qt
