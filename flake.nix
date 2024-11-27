@@ -11,7 +11,8 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     chaotic.url = "github:chaotic-cx/nyx/99820d0879145c40652598a80540692505eebb23";
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
+    #TODO: switch back to upstream gmodena/nix-flatpak once the lib.mdDoc issue is resolved
+    nix-flatpak.url = "github:rafmaninoff/nix-flatpak";
 
     arrpc = {
       url = "github:notashelf/arrpc-flake";
