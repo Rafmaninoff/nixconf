@@ -74,6 +74,7 @@
         protonup
         protontricks
         protonup-qt
+        xwayland-run
         (wrapOBS {
           plugins = with obs-studio-plugins; [
             obs-vkcapture
