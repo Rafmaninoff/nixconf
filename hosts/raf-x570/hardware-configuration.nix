@@ -11,7 +11,7 @@
 
   boot.initrd.availableKernelModules = [ "nvme" "ahci" "xhci_pci" "usbhid" "usb_storage" "uas" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" "amd_iommu" ];
+  boot.kernelModules = [ ];
 
   boot.extraModprobeConfig = ''
     options btusb enable_autosuspend=n
@@ -24,8 +24,8 @@
     enable = true;
     enable32Bit = true;
 
-    extraPackages = [ pkgs.amdvlk ];
-    extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+    # extraPackages = [ pkgs.amdvlk ];
+    # extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
   };
 
   services.fwupd.enable = true;
