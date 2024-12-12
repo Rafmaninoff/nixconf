@@ -65,6 +65,7 @@
           gimp
           inkscape
           obsidian
+          fractal
         ])
         ++ (with pkgs-stable; [
           libreoffice-qt
