@@ -18,7 +18,7 @@
   '';
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  boot.kernelParams = [ "mitigations=off" "pcie_aspm=off" ];
+  boot.kernelParams = [ "mitigations=off" "pcie_aspm=off" "amdgpu.dcdebugmask=0x400" ];
 
   hardware.graphics = {
     enable = true;
@@ -49,8 +49,8 @@
 
 
   #force default driver to be mesa radv
-  environment.variables.VK_DRIVER_FILES = "/run/opengl-driver-32/share/vulkan/icd.d/radeon_icd.i686.json:/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
-  environment.variables.DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1 = 1;
+  # environment.variables.VK_DRIVER_FILES = "/run/opengl-driver-32/share/vulkan/icd.d/radeon_icd.i686.json:/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+  # environment.variables.DISABLE_LAYER_AMD_SWITCHABLE_GRAPHICS_1 = 1;
 
   boot.tmp = {
     useTmpfs = true;
