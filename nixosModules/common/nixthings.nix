@@ -2,7 +2,7 @@
 {
   nix = {
     package = pkgs.lix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
     settings.substituters = [
       "https://watersucks.cachix.org"
     ];
@@ -21,8 +21,8 @@
       enable = true;
       extraArgs = "--keep-since 15d --keep 5";
     };
-    flake = "/home/raf/nixconf-new/"; #TODO: make it point to github version, after i'm done with the rewrite
   };
+  environment.sessionVariables.FLAKE = "github:rafmaninoff/nixconf";
 
   nixpkgs.config.allowUnfree = true;
 
