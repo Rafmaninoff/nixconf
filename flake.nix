@@ -1,22 +1,23 @@
 {
-  inputs = {
-    # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/4aa36568d413aca0ea84a1684d2d46f55dbabad7";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+  description = "My NixOS configuration.";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11";
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
-
-    arrpc = {
-      url = "github:notashelf/arrpc-flake";
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -28,74 +29,50 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    kmonad = {
-      url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
-    disko = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs =
-    { self, nixpkgs, nixpkgs-stable, chaotic, nixos-cli, home-manager, nixos-hardware, rust-overlay, kmonad, ... }@inputs:
-    let inherit (self) outputs;
+  outputs = { self, nixpkgs, nixpkgs-stable, ... }@inputs:
+    let
       system = "x86_64-linux";
-      myOverlays = [
-        rust-overlay.overlays.default
-      ];
-
+      myOverlays = [ inputs.rust-overlay.overlays.default ];
       pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; }; overlays = myOverlays; };
-      pkgs-stable = import nixpkgs-stable { inherit system; config = { allowUnfree = true; }; overlays = myOverlays; };
-
+      pkgs-stable = import nixpkgs-stable { inherit system; config = { allowUnfree = true; }; };
     in
     {
       nixosConfigurations = {
-        "raf-x570" = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; inherit pkgs-stable; };
-          modules = [
-            ./hosts/raf-x570/configuration.nix
-            chaotic.nixosModules.default
-            nixos-cli.nixosModules.nixos-cli
-            # kmonad.nixosModules.default
-            inputs.nix-flatpak.nixosModules.nix-flatpak
-          ];
-        };
-        "sb2" = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; inherit pkgs-stable; };
+        "sb2" = inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; inherit pkgs-stable; };
           modules = [
             ./hosts/sb2/configuration.nix
-            chaotic.nixosModules.default
-            nixos-cli.nixosModules.nixos-cli
-            # kmonad.nixosModules.default
-            inputs.nix-flatpak.nixosModules.nix-flatpak
             inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+            inputs.nixos-cli.nixosModules.nixos-cli
+            inputs.chaotic.nixosModules.default
+          ];
+        };
+        "raf-x570" = inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; inherit pkgs-stable; };
+          modules = [
+            ./hosts/raf-x570/configuration.nix
+            inputs.nix-flatpak.nixosModules.nix-flatpak
+            inputs.nixos-cli.nixosModules.nixos-cli
+            inputs.chaotic.nixosModules.default
           ];
         };
       };
 
       homeConfigurations = {
-        "raf@raf-x570" = home-manager.lib.homeManagerConfiguration {
+        "raf@sb2" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs;
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/home.nix
-          ];
+          extraSpecialArgs = { inherit inputs; };
+          modules = [ ./home/home.nix ];
+
         };
 
-        "raf@sb2" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/home.nix
-          ];
-        };
       };
+
+
     };
 }

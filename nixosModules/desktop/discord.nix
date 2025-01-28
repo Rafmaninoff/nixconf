@@ -1,23 +1,29 @@
 { pkgs, lib, config, ... }:
+with lib;
+let
+  cfg = config.has.discord;
+in
 {
+  options.has.discord = mkOption {
+    description = "Enable discord and related things";
+    type = types.bool;
+    default = true;
+  };
 
-  options.has.discord = lib.mkEnableOption "enable discord and related things";
-
-  config = lib.mkIf config.has.discord {
-    environment.systemPackages = with pkgs; [ vesktop arrpc ];
+  config = mkIf cfg {
+    environment.systemPackages = with pkgs; [ vesktop equibop arrpc ];
     systemd.user.services = {
       arrpc = {
         partOf = [ "graphical-session.target" ];
-        after = [ "graphical-session.target" ];
+        after = [ "graphical-sesstion.target" ];
         wantedBy = [ "graphical-session.target" ];
 
         description = "Discord rich presence for non-default clients";
         serviceConfig = {
-          ExecStart = "${lib.getExe pkgs.arrpc}";
+          ExecStart = "${getExe pkgs.arrpc}";
           Restart = "always";
         };
       };
     };
   };
-
 }

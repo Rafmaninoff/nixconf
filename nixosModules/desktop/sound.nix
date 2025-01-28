@@ -1,5 +1,8 @@
 { pkgs, lib, config, ... }:
 with lib;
+let
+  cfg = config.has.sound;
+in
 {
   options.has.sound = mkOption {
     description = "enable sound";
@@ -7,17 +10,13 @@ with lib;
     default = true;
   };
 
-  config = mkIf config.has.sound {
+  config = mkIf cfg {
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      jack.enable = true;
-      media-session.enable = true;
     };
   };
-
-
 }

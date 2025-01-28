@@ -9,40 +9,25 @@
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [
-    "surface_aggregator"
-    "surface_aggregator_registry"
-    "surface_aggregator_hub"
-    "surface_hid"
-    "surface_hid_core"
-    "intel_lpss"
-    "intel_lpss_pci"
-    "8250_dw"
-  ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.blacklistedKernelModules = [ "ipu3_imgu" ];
   boot.extraModulePackages = [ ];
-
-  boot.kernelParams = [ "mitigations=off" ];
-
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/8947c991-d6d4-4ef1-af76-6564b0155e8d";
+      device = "/dev/disk/by-uuid/9bd2c64f-29a6-4d3a-a390-bf860725108f";
       fsType = "btrfs";
       options = [ "subvol=@" "compress=zstd" "noatime" ];
     };
 
-  boot.initrd.luks.devices."luks-6292a65c-3b13-4d84-9cb4-f23dfca59d8a".device = "/dev/disk/by-uuid/6292a65c-3b13-4d84-9cb4-f23dfca59d8a";
-
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/C96E-DAF3";
+      device = "/dev/disk/by-uuid/BDF4-2216";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -53,7 +38,5 @@
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  nix.settings.max-jobs = lib.mkDefault 8;
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
 }

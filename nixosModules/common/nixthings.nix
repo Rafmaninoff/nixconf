@@ -3,15 +3,16 @@
   nix = {
     package = pkgs.lix;
     settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.substituters = [
+      "https://watersucks.cachix.org"
+    ];
+    settings.trusted-public-keys = [
+      "watersucks.cachix.org-1:6gadPC5R8iLWQ3EUtfu3GFrVY7X6I4Fwz/ihW25Jbv8="
+    ];
     optimise = {
       automatic = true;
       dates = [ "00:00:00" ];
     };
-  };
-
-  services.nixos-cli = {
-    enable = true;
-    prebuildOptionCache = true;
   };
 
   programs.nh = {
@@ -20,8 +21,10 @@
       enable = true;
       extraArgs = "--keep-since 15d --keep 5";
     };
-    flake = "/home/raf/nixconf";
+    flake = "/home/raf/nixconf-new/"; #TODO: make it point to github version, after i'm done with the rewrite
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   programs.nix-ld = {
     enable = true;
@@ -30,7 +33,7 @@
     ];
   };
 
-  #applies to the instance of nixpkgs which defined the current nixos configuration
-  nixpkgs.config.allowUnfree = true;
-
+  services.nixos-cli = {
+    enable = true;
+  };
 }

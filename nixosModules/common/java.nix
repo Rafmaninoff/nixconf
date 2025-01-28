@@ -1,10 +1,16 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.has.javawrappers;
-in {
-  options.has.javawrappers = mkEnableOption "enable java wrappers";
+let
+  cfg = config.has.javawrappers;
+in
+{
+  options.has.javawrappers = mkOption {
+    description = "wrappers for different java versions";
+    type = types.bool;
+    default = true;
+  };
 
-  config = mkIf config.has.javawrappers {
+  config = mkIf cfg {
     environment.systemPackages = with pkgs; [
       (writeShellScriptBin "java8" ''
         ${pkgs.jdk8}/bin/java "$@"
@@ -16,7 +22,5 @@ in {
         ${pkgs.jdk21}/bin/java "$@"
       '')
     ];
-
   };
-
 }

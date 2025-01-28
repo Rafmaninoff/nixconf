@@ -1,114 +1,114 @@
-{ pkgs, pkgs-stable, lib, config, ... }:
+{ pkgs, lib, config, ... }:
+with lib;
+let
+  cfg = config.has.gaming;
+in
 {
+  options.has.gaming = mkOption {
+    description = "enable gaming things.";
+    type = types.bool;
+    default = false;
+  };
 
-  options.has.gaming = lib.mkEnableOption "enable gaming";
+  config = mkIf cfg {
+    users.users.raf.extraGroups = [ "realtime" ];
+    services.udev.extraRules = ''
+      KERNEL=="cpu_dma_latency", GROUP="realtime"
+    '';
 
-  config = lib.mkIf config.has.gaming
-    {
-      users.users.raf.extraGroups = [ "realtime" ];
+    security.pam.loginLimits = [
+      {
+        domain = "@realtime";
+        type = "-";
+        item = "rtprio";
+        value = "98";
+      }
+      {
+        domain = "@realtime";
+        type = "-";
+        item = "memlock";
+        value = "unlimited";
+      }
+      {
+        domain = "@realtime";
+        type = "-";
+        item = "nice";
+        value = "-11";
+      }
+    ];
 
-      #realtime group from archlinux
-      users.groups.realtime = { };
-
-      services.udev.extraRules = ''
-        KERNEL=="cpu_dma_latency", GROUP="realtime"
-      '';
-
-      security.pam.loginLimits = [
-        {
-          domain = "@realtime";
-          type = "-";
-          item = "rtprio";
-          value = "98";
-        }
-        {
-          domain = "@realtime";
-          type = "-";
-          item = "memlock";
-          value = "unlimited";
-        }
-        {
-          domain = "@realtime";
-          type = "-";
-          item = "nice";
-          value = "-11";
-        }
-      ];
-
-      nixpkgs.config.packageOverrides = pkgs: {
-        steam = pkgs.steam.override {
-          extraPkgs = pkgs: with pkgs; [
-            xorg.libXcursor
-            xorg.libXi
-            xorg.libXinerama
-            xorg.libXScrnSaver
-            libpng
-            libpulseaudio
-            libvorbis
-            stdenv.cc.cc.lib
-            libkrb5
-            keyutils
-            (writeShellScriptBin "launch-gamescope" ''
-              (sleep 1; pgrep gamescope | xargs renice -n -11 -p)&
-              exec gamescope "$@"
-            '')
-          ];
-        };
-      };
-
-      environment.systemPackages = (with pkgs; [
-        vulkan-tools
-        gpu-viewer
-        ckan
-        ryujinx
-        melonDS
-        dolphin-emu
-        jstest-gtk
-        sdl-jstest
-        evtest-qt
-        prismlauncher
-        goverlay
-        mangohud
-        steamtinkerlaunch
-        antimicrox
-        protonup
-        protontricks
-        protonup-qt
-        xwayland-run
-        (wrapOBS {
-          plugins = with obs-studio-plugins; [
-            obs-vkcapture
-          ];
-        })
-        (lutris.override {
-          extraPkgs = pkgs: [
-            adwaita-icon-theme
-            wineWowPackages.waylandFull
-          ];
-          extraLibraries = pkgs: [
-            gst_all_1.gstreamer
-
-          ];
-        })
-      ]) ++ (with pkgs-stable; [
-        cemu
-      ]);
-
-      programs.gamemode = {
-        enable = true;
-        enableRenice = true;
-      };
-
-      programs.gamescope = {
-        enable = true;
-        # capSysNice = true;
-      };
-
-      programs.steam = {
-        enable = true;
-        remotePlay.openFirewall = true;
-        dedicatedServer.openFirewall = true;
-        gamescopeSession.enable = true;
+    nixpkgs.config.packageOverrides = pkgs: {
+      steam = pkgs.steam.override {
+        extraPkgs = pkgs: with pkgs; [
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXScrnSaver
+          libpng
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib
+          libkrb5
+          keyutils
+          (writeShellScriptBin "launch-gamescope" ''
+            (sleep 1; pgrep gamescope | xargs renice -n -11 -p)&
+            exec gamescope "$@"
+          '')
+        ];
       };
     };
+
+    environment.systemPackages = with pkgs; [
+      vulkan-tools
+      gpu-viewer
+      ckan
+      ryujinx
+      melonDS
+      dolphin-emu
+      jstest-gtk
+      sdl-jstest
+      evtest-qt
+      prismlauncher
+      goverlay
+      mangohud
+      steamtinkerlaunch
+      antimicrox
+      protonup
+      protontricks
+      protonup-qt
+      xwayland-run
+      cemu
+      (wrapOBS {
+        plugins = with obs-studio-plugins; [
+          obs-vkcapture
+        ];
+      })
+      (lutris.override {
+        extraPkgs = pkgs: [
+          adwaita-icon-theme
+          wineWowPackages.waylandFull
+        ];
+        extraLibraries = pkgs: [
+          gst_all_1.gstreamer
+        ];
+      })
+    ];
+
+    programs.gamemode = {
+      enable = true;
+      enableRenice = true;
+    };
+
+    programs.gamescope = {
+      enable = true;
+      #capSysNice = true;
+    };
+
+    programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      gamescopeSession.enable = true;
+    };
+  };
 }

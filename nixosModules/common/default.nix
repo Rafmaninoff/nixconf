@@ -1,16 +1,13 @@
-{ pkgs, lib, config, ... }: {
-  imports =
-    [
-      ./bootloader.nix
-      ./nixthings.nix
-      ./locale.nix
-      ./appimage.nix
-      ./java.nix
-      ./podman.nix
-      ./flatpak.nix
-      ./remotebuild.nix
-    ];
+{ config, lib, pkgs, ... }: {
+  imports = [
+    ./sudo.nix
+    ./appimage.nix
+    ./bootloader.nix
+    ./nixthings.nix
+    ./flatpak.nix
+    ./java.nix
+    ./locale.nix
+  ];
 
-  has.appimage = lib.mkDefault true;
 
 }

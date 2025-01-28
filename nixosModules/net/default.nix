@@ -2,7 +2,7 @@
   imports = [
     ./ssh.nix
     ./fail2endlessh.nix
-    ./avahi.nix
+    ./zerotierone.nix
   ];
 
   networking.firewall = {

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, lib, config, ... }:
 {
   fonts.packages = with pkgs; [
     noto-fonts
@@ -10,6 +10,6 @@
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
-    nerdfonts
-  ];
+  ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+
 }

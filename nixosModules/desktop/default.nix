@@ -1,13 +1,14 @@
 { pkgs, pkgs-stable, lib, config, ... }:
 {
   imports = [
-    ./waydroid.nix
     ./fonts.nix
     ./discord.nix
-    ./gaming.nix
     ./fcitx.nix
-    ./input-leap.nix
+    ./gaming.nix
+    ./kmonad.nix
+    ./sound.nix
     ./sunshine-moonlight.nix
+    ./openrgb.nix
   ];
 
   options.has.defaultDesktopPackages = lib.mkOption {
@@ -16,21 +17,13 @@
     default = true;
   };
 
-
   config = lib.mkMerge [
     ({
-      has.discord = lib.mkDefault true;
-      has.waydroid = lib.mkDefault true;
-      has.gaming = lib.mkDefault true;
-      has.fcitx = lib.mkDefault true;
-
-      #keymap options
       services.xserver.xkb = lib.mkDefault {
         layout = "us";
         variant = "";
         options = "compose:102,compose:menu,caps:hyper,lv3:ralt_switch";
       };
-
     })
     (lib.mkIf config.has.defaultDesktopPackages {
       environment.systemPackages =
@@ -43,7 +36,6 @@
           wget
           flameshot
           filelight
-          clac
           vlc
           piper
           signal-desktop
@@ -56,7 +48,6 @@
           usbutils
           stremio
           btrfs-assistant
-          quickemu
           floorp
           firefox
           microsoft-edge
@@ -66,13 +57,13 @@
           inkscape
           obsidian
           fractal
-        ])
-        ++ (with pkgs-stable; [
+        ]) ++ (with pkgs-stable; [
           libreoffice-qt
           hunspell
           hunspellDicts.es_ES
           hunspellDicts.en_GB-ise
           tor-browser-bundle-bin
+          quickemu
         ]);
     })
   ];
