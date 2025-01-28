@@ -40,11 +40,10 @@
   time.timeZone = "America/Montevideo";
 
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  # services.displayManager.sddm = {
-  #   enable = true;
-  #   wayland.enable = true;
-  # };
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
   services.desktopManager.plasma6.enable = true;
 
   programs.git.enable = true;
