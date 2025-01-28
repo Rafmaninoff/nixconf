@@ -33,6 +33,10 @@
   # Set your time zone.
   time.timeZone = "America/Montevideo";
 
+  environment.systemPackages = with pkgs; [
+    teamspeak5_client
+  ];
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.displayManager.sddm = {
