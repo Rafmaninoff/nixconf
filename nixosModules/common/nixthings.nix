@@ -2,7 +2,7 @@
 {
   nix = {
     package = pkgs.lix;
-    settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
+    settings.experimental-features = [ "nix-command" "flakes" "pipe-operator" ];
     settings.substituters = [
       "https://watersucks.cachix.org"
     ];
