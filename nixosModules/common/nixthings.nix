@@ -21,8 +21,8 @@
       enable = true;
       extraArgs = "--keep-since 15d --keep 5";
     };
+    flake = "/home/raf/nixconf/";
   };
-  environment.sessionVariables.FLAKE = "github:rafmaninoff/nixconf";
 
   nixpkgs.config.allowUnfree = true;
 
