@@ -68,11 +68,13 @@
           pkgs = pkgs;
           extraSpecialArgs = { inherit inputs; };
           modules = [ ./home/home.nix ];
-
         };
 
+        "raf@raf-x570" = inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [ ./home/home.nix ];
+        };
       };
-
-
     };
 }
