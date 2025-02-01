@@ -31,7 +31,6 @@
 
   services.thermald.enable = true;
 
-
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -48,11 +47,6 @@
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
   programs.git.enable = true;
 
   hardware.bluetooth.enable = true;
