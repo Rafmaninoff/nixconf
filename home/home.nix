@@ -12,6 +12,7 @@
     ./zsh.nix
     ./kitty.nix
     homeModules/cli
+    homeModules/apps
   ];
 
   home = {
