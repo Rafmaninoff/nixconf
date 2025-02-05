@@ -22,6 +22,10 @@
 
   boot.kernelParams = [ "mitigations=off" ];
 
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+
+  boot.kernel.sysctl = { "dev.i915.perf_stream_paranoid" = 0; };
+
   hardware.cpu.intel.updateMicrocode = true;
 
   services.iptsd = {
@@ -30,6 +34,8 @@
   };
 
   services.thermald.enable = true;
+
+  security.polkit.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -61,6 +67,7 @@
 
   programs.zsh.enable = true;
 
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -79,6 +86,9 @@
     kdePackages.qtsensors
     iio-sensor-proxy
     libsForQt5.qt5.qtsensors
+    cheese
+    webcamoid
+    libcamera-qcam
   ];
 
   has.ssh = true;
