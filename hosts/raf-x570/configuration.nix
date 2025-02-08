@@ -48,7 +48,10 @@
 
   programs.git.enable = true;
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
   programs.zsh.enable = true;
 
