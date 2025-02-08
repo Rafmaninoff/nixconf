@@ -71,6 +71,7 @@
     flatpaks = [
       "org.jdownloader.JDownloader"
       "us.zoom.Zoom"
+      "dev.vencord.Vesktop"
     ];
   };
 
