@@ -35,7 +35,7 @@
           deluge
           wget
           flameshot
-          filelight
+          kdePackages.filelight
           vlc
           piper
           signal-desktop
