@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, pkgs-stable, lib, config, ... }:
 with lib;
 let
   cfg = config.has.gaming;
@@ -58,12 +58,11 @@ in
       };
     };
 
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = (with pkgs; [
       vulkan-tools
       gpu-viewer
       ckan
       ryujinx
-      melonDS
       dolphin-emu
       jstest-gtk
       sdl-jstest
@@ -92,7 +91,9 @@ in
           gst_all_1.gstreamer
         ];
       })
-    ];
+    ]) ++ (with pkgs-stable; [
+      melonDS
+    ]);
 
     programs.gamemode = {
       enable = true;
