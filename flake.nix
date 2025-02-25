@@ -43,7 +43,7 @@
     {
       nixosConfigurations = {
         "sb2" = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; inherit pkgs-stable; };
+          specialArgs = { inherit inputs pkgs-stable; };
           modules = [
             ./hosts/sb2/configuration.nix
             inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
@@ -53,7 +53,7 @@
           ];
         };
         "raf-x570" = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; inherit pkgs-stable; };
+          specialArgs = { inherit inputs pkgs-stable; };
           modules = [
             ./hosts/raf-x570/configuration.nix
             inputs.nix-flatpak.nixosModules.nix-flatpak
