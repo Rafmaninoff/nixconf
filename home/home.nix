@@ -55,7 +55,7 @@
     };
   };
 
-  programs.zellij = { enable = true; };
+  programs.zellij = { enable = false; };
 
   programs.zoxide = { enable = true; enableZshIntegration = true; };
 
