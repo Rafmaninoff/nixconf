@@ -33,7 +33,7 @@
     ];
   };
 
-  services.nixos-cli = {
-    enable = true;
-  };
+  # services.nixos-cli = {
+  #   enable = true;
+  # };
 }
