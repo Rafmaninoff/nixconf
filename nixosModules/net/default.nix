@@ -3,6 +3,7 @@
     ./ssh.nix
     ./fail2endlessh.nix
     ./zerotierone.nix
+    ./tailscale.nix
   ];
 
   networking.firewall = {
