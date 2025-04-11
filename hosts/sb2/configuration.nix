@@ -22,11 +22,17 @@
 
   boot.kernelParams = [ "mitigations=off" ];
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+    cpupower
+    x86_energy_perf_policy
+  ];
 
   boot.kernel.sysctl = { "dev.i915.perf_stream_paranoid" = 0; };
 
   hardware.cpu.intel.updateMicrocode = true;
+
+  services.cpupower-gui.enable = true;
 
   services.iptsd = {
     enable = true;
@@ -92,6 +98,8 @@
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
+    cpufrequtils
+    libva-utils
   ];
 
   has.ssh = true;
