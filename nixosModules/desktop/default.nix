@@ -57,13 +57,13 @@
           inkscape
           obsidian
           fractal
+          quickemu
         ]) ++ (with pkgs-stable; [
           libreoffice-qt
           hunspell
           hunspellDicts.es_ES
           hunspellDicts.en_GB-ise
           tor-browser-bundle-bin
-          quickemu
         ]);
     })
   ];
