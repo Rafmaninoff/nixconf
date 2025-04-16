@@ -7,6 +7,7 @@
     ./flatpak.nix
     ./java.nix
     ./locale.nix
+    ./distrobox.nix
   ];
 
 
