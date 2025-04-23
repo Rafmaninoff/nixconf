@@ -14,11 +14,11 @@
         #{ name = ""; tags = [  ]; }
       ];
     };
-    initContents = lib.mkBefore ''
+    initContent = lib.mkBefore ''
       		    if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
       		      source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
       		    fi
-              
+
       		    abbrev-alias --init
       		    for file in ''${XDG_CONFIG_HOME:-$HOME/.config}/zsh/*(.); source $file
 
