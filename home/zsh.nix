@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -14,12 +14,11 @@
         #{ name = ""; tags = [  ]; }
       ];
     };
-    initExtraFirst = ''
+    initContents = lib.mkBefore ''
       		    if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
       		      source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
       		    fi
-      		'';
-    initExtra = ''
+              
       		    abbrev-alias --init
       		    for file in ''${XDG_CONFIG_HOME:-$HOME/.config}/zsh/*(.); source $file
 
