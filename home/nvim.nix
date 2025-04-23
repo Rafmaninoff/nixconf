@@ -31,7 +31,7 @@
       gopls
       bash-language-server
       pyright
-      ruff-lsp
+      ruff
       lua-language-server
       yaml-language-server
       neocmakelsp
