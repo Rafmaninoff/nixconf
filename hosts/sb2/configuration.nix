@@ -100,6 +100,7 @@
     gst_all_1.gst-plugins-good
     cpufrequtils
     libva-utils
+    kdePackages.kscreen
   ];
 
   has.ssh = true;
