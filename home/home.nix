@@ -64,7 +64,7 @@
     enableSshSupport = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    pinentryPackage = pkgs.pinentry-qt;
+    pinentry.package = pkgs.pinentry-qt;
     extraConfig = ''
     '';
   };
