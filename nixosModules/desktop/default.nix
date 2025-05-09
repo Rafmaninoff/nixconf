@@ -48,7 +48,6 @@
           usbutils
           stremio
           btrfs-assistant
-          floorp
           firefox
           microsoft-edge
           unrar
