@@ -11,6 +11,7 @@ in
   };
 
   config = mkIf cfg {
+    users.groups.realtime = { };
     users.users.raf.extraGroups = [ "realtime" ];
     services.udev.extraRules = ''
       KERNEL=="cpu_dma_latency", GROUP="realtime"
