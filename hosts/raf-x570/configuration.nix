@@ -76,6 +76,7 @@
       "us.zoom.Zoom"
       "dev.vencord.Vesktop"
       "com.usebottles.bottles"
+      "com.microsoft.edge"
 
     ];
   };

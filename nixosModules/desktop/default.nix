@@ -49,7 +49,6 @@
           stremio
           btrfs-assistant
           firefox
-          microsoft-edge
           unrar
           krita
           gimp
