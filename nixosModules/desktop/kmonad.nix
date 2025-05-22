@@ -12,10 +12,7 @@ in
 
   config = mkIf cfg {
     environment.systemPackages = [ pkgs.kmonad ];
-    users.groups = { uinput = { }; };
-    services.udev.extraRules = ''
-      KERNEL="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput";
-    '';
+    hardware.uinput.enable = true;
     users.users.raf.extraGroups = [ "uinput" ];
   };
 }
