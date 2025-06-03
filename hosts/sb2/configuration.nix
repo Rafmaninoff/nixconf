@@ -28,6 +28,10 @@
     x86_energy_perf_policy
   ];
 
+  #or "longterm"
+  hardware.microsoft-surface.kernelVersion = "stable";
+
+
   boot.kernel.sysctl = { "dev.i915.perf_stream_paranoid" = 0; };
 
   hardware.cpu.intel.updateMicrocode = true;
