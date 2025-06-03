@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   imports =
@@ -44,6 +44,8 @@
   };
 
   services.thermald.enable = true;
+
+  services.tlp.enable = lib.mkForce false;
 
   security.polkit.enable = true;
 
