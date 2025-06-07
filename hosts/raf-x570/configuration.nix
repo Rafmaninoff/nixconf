@@ -19,13 +19,7 @@
 
   services.ratbagd.enable = true;
 
-  programs.corectrl = {
-    enable = true;
-    gpuOverclock = {
-      enable = true;
-      ppfeaturemask = "0xffffffff";
-    };
-  };
+  programs.corectrl.enable = true;
 
   is.sunshine-host = true;
 
@@ -34,6 +28,11 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   hardware.graphics = { enable = true; };
+
+  hardware.amdgpu.overdrive = {
+    enable = true;
+    ppfeaturemask = "0xffffffff";
+  };
 
   networking.networkmanager.enable = true;
 
