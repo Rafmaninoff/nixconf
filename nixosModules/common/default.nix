@@ -8,6 +8,7 @@
     ./java.nix
     ./locale.nix
     ./distrobox.nix
+    ./libvirt.nix
   ];
 
 

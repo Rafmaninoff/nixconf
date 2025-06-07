@@ -74,12 +74,12 @@
     flatpaks = [
       "org.jdownloader.JDownloader"
       "us.zoom.Zoom"
-      "dev.vencord.Vesktop"
       "com.usebottles.bottles"
       "com.microsoft.edge"
-
     ];
   };
+
+  has.libvirt = true;
 
 
   system.stateVersion = "25.05";
