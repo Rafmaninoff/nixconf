@@ -74,7 +74,7 @@
       "org.jdownloader.JDownloader"
       "us.zoom.Zoom"
       "com.usebottles.bottles"
-      "com.microsoft.edge"
+      "com.microsoft.Edge"
     ];
   };
 
