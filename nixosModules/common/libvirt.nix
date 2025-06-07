@@ -14,7 +14,7 @@ in
     virtualisation.libvirtd.enable = true;
 
     virtualisation.libvirtd.qemu = {
-      swtpm = true;
+      swtpm.enable = true;
       ovmf.packages = [ pkgs.OVMFFull.fd ];
     };
 
