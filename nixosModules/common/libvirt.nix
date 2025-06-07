@@ -26,6 +26,7 @@ in
       dnsmasq
       virt-manager
       virt-manager-qt
+      spice-gtk
     ];
 
 
