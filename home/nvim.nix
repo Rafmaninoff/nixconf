@@ -25,6 +25,7 @@
       nodejs
       go
       gotools
+      ast-grep
 
       #language servers
       nil
