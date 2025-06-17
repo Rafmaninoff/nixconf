@@ -9,6 +9,8 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      #import preset
+      ../presets/pc.nix
       ../../nixosModules/common
       ../../nixosModules/desktop
       ../../nixosModules/net
@@ -66,8 +68,6 @@
 
   # Configure keymap in X11
   programs.git.enable = true;
-
-  hardware.bluetooth.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.raf = {
