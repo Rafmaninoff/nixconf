@@ -10,7 +10,7 @@ with lib;
   config = mkMerge [
     {
       #unconditional
-      env.__NIXOS_PRESET = "pc";
+      environment.sessionVariables."__NIXOS_PRESET" = "pc";
 
       hardware.bluetooth = {
         enable = true;
