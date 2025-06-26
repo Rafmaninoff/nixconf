@@ -16,6 +16,11 @@ with lib;
         enable = true;
         powerOnBoot = true;
       };
+
+      programs.ydotool = {
+        group = "wheel";
+        enable = true;
+      };
     }
   ];
 

@@ -1,6 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 {
   imports = [
+    ../presets/pc.nix
     ./hardware-configuration.nix
     ../../nixosModules/desktop
     ../../nixosModules/net
