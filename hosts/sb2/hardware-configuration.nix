@@ -18,7 +18,7 @@
     {
       device = "/dev/disk/by-uuid/9bd2c64f-29a6-4d3a-a390-bf860725108f";
       fsType = "btrfs";
-      options = [ "subvol=@" "compress=zstd" "noatime" ];
+      options = [ "subvol=@" "noatime" ];
     };
 
   fileSystems."/boot" =
