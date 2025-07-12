@@ -76,6 +76,7 @@ in
       protonup
       protontricks
       protonup-qt
+      protonplus
       xwayland-run
       cemu
       (wrapOBS {
