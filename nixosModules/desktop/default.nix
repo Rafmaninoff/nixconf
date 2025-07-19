@@ -56,6 +56,7 @@
           obsidian
           fractal
           quickemu
+          tmux
         ]) ++ (with pkgs-stable; [
           libreoffice-qt
           hunspell
