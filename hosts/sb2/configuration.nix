@@ -5,16 +5,15 @@
 { lib, config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      #import preset
-      ../presets/pc.nix
-      ../../nixosModules/common
-      ../../nixosModules/desktop
-      ../../nixosModules/net
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    #import preset
+    ../presets/pc.nix
+    ../../nixosModules/common
+    ../../nixosModules/desktop
+    ../../nixosModules/net
+  ];
 
   networking.hostName = "sb2"; # Define your hostname.
 
@@ -30,9 +29,13 @@
     x86_energy_perf_policy
   ];
 
+  boot.initrd.unl0kr = {
+    allowVendorDrivers = true;
+    enable = true;
+  };
+
   #or "longterm"
   hardware.microsoft-surface.kernelVersion = "stable";
-
 
   boot.kernel.sysctl = { "dev.i915.perf_stream_paranoid" = 0; };
 
@@ -73,12 +76,12 @@
   users.users.raf = {
     isNormalUser = true;
     description = "raf";
-    extraGroups = [ "networkmanager" "wheel" "input" "adbusers" "surface-control" ];
+    extraGroups =
+      [ "networkmanager" "wheel" "input" "adbusers" "surface-control" ];
     shell = pkgs.zsh;
   };
 
   programs.zsh.enable = true;
-
 
   # Install firefox.
   programs.firefox.enable = true;

@@ -4,39 +4,41 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/9bd2c64f-29a6-4d3a-a390-bf860725108f";
-      fsType = "btrfs";
-      options = [ "subvol=@" "noatime" ];
-    };
+  boot.initrd.luks.devices = {
+    "cryptroot".device = "/dev/disk/by-partlabel/cryptroot";
+    "cryptswap".device = "/dev/disk/by-partlabel/cryptswap";
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/BDF4-2216";
+  fileSystems = {
+    "/boot" = {
+      device = "/dev/disk/by-label/NIXOSESP";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
+    "/" = {
+      device = "/dev/disk/by-label/nixos-root";
+      fsType = "ext4";
+      options = [ "noatime" ];
+    };
+  };
 
-  swapDevices = [ ];
+  swapDevices = [{ device = "/dev/disk/by-label/nixos-swap"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
