@@ -66,6 +66,8 @@
 
   ];
 
+  has.zerotierone = true;
+
   has.ssh = true;
   services.openssh.settings.PasswordAuthentication = true;
 
