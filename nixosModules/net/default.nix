@@ -6,12 +6,16 @@
     ./tailscale.nix
   ];
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPortRanges = [ ];
-    allowedTCPPorts = [ 4656 ];
-    allowedUDPPortRanges = [ ];
-    allowedUDPPorts = [ ];
-  };
+  networking.firewall =
+    let
+      portsAll = [ 4656 ];
+    in
+    {
+      enable = true;
+      allowedTCPPortRanges = [ ];
+      allowedTCPPorts = portsAll ++ [ ];
+      allowedUDPPortRanges = [ ];
+      allowedUDPPorts = portsAll ++ [ ];
+    };
 }
 
