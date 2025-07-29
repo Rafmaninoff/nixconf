@@ -8,7 +8,7 @@
 
   networking.firewall =
     let
-      portsAll = [ 4656 ];
+      portsAll = [ 4656 63763 25565 ];
     in
     {
       enable = true;
