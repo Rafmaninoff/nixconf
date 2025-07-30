@@ -35,7 +35,7 @@
   };
 
   #or "longterm"
-  hardware.microsoft-surface.kernelVersion = "stable";
+  hardware.microsoft-surface.kernelVersion = "longterm";
 
   boot.kernel.sysctl = { "dev.i915.perf_stream_paranoid" = 0; };
 
