@@ -6,8 +6,8 @@
 
 {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./disko-config.nix
     #import preset
     ../presets/pc.nix
     ../../nixosModules/common
@@ -34,8 +34,10 @@
     enable = true;
   };
 
-  #or "longterm"
-  hardware.microsoft-surface.kernelVersion = "longterm";
+  #"stable or "longterm"
+  hardware.microsoft-surface.kernelVersion = "stable";
+
+  services.thermald.enable = lib.mkForce false;
 
   boot.kernel.sysctl = { "dev.i915.perf_stream_paranoid" = 0; };
 
@@ -47,8 +49,6 @@
     enable = true;
     config.Touchscreen.DisableOnStylus = true;
   };
-
-  services.thermald.enable = true;
 
   services.tlp.enable = lib.mkForce false;
 

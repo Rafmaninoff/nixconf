@@ -3,9 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.05";
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -42,10 +47,11 @@
     in
     {
       nixosConfigurations = {
-        "sb2" = inputs.nixpkgs.lib.nixosSystem {
+        "sb2" = inputs.nixpkgs-stable.lib.nixosSystem {
           specialArgs = { inherit inputs pkgs-stable; };
           modules = [
             ./hosts/sb2/configuration.nix
+            inputs.disko.nixosModules.disko
             inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
             inputs.nix-flatpak.nixosModules.nix-flatpak
             inputs.nixos-cli.nixosModules.nixos-cli
