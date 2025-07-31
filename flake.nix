@@ -52,7 +52,6 @@
           modules = [
             ./hosts/sb2/configuration.nix
             inputs.disko.nixosModules.disko
-            inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
             inputs.nix-flatpak.nixosModules.nix-flatpak
             inputs.nixos-cli.nixosModules.nixos-cli
             inputs.chaotic.nixosModules.default
