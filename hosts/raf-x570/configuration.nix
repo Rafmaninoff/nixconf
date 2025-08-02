@@ -13,6 +13,7 @@
   networking.hostName = "raf-x570";
 
   has.gaming = true;
+  has.openrgb = true;
 
   programs.adb.enable = true;
 
@@ -67,6 +68,8 @@
   ];
 
   has.zerotierone = true;
+
+
 
   has.ssh = true;
   services.openssh.settings.PasswordAuthentication = true;
