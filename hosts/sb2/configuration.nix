@@ -6,6 +6,9 @@
 
 {
   imports = [
+    #FIXME: temporary workaround for libcamera ipa module wireplumber crashing
+    ./libcamera.nix
+
     ./hardware-configuration.nix
     ./disko-config.nix
     #import preset
