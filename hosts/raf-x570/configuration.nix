@@ -29,7 +29,13 @@
   boot.kernelParams = [ "mitigations=off" "amdgpu.dcdebugmask=0x400" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
 
-  hardware.graphics = { enable = true; };
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+      mesa.opencl
+    ];
+  };
 
   hardware.amdgpu.overdrive = {
     enable = true;
@@ -64,6 +70,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    davinci-resolve
+
+    teamspeak6-client
 
   ];
 
