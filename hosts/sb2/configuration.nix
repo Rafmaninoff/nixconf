@@ -18,6 +18,9 @@
     ../../nixosModules/net
   ];
 
+  #FIXME: same as above
+  services.pipewire.useCustomLibcamera = true;
+
   networking.hostName = "sb2"; # Define your hostname.
 
   has.gaming = true;
