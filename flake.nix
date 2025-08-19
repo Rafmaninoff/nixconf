@@ -47,7 +47,7 @@
     in
     {
       nixosConfigurations = {
-        "sb2" = inputs.nixpkgs-stable.lib.nixosSystem {
+        "sb2" = inputs.nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs pkgs-stable; };
           modules = [
             ./hosts/sb2/configuration.nix
