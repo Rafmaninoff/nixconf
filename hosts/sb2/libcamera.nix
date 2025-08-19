@@ -6,12 +6,7 @@
 #   `services.pipewire.useCustomLibcamera = true;`
 
 
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ... }:
 
 let
   # Custom libcamera with post-processing
@@ -42,3 +37,5 @@ in
 
     # Optional: expose custom libcamera system-wide
     environment.systemPackages = [ customLibcamera ];
+    };
+}
