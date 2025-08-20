@@ -70,10 +70,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    davinci-resolve
-
     teamspeak6-client
-
   ];
 
   has.zerotierone = true;
