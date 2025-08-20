@@ -63,7 +63,7 @@ in
       vulkan-tools
       gpu-viewer
       ckan
-      ryujinx
+      ryubing
       dolphin-emu
       jstest-gtk
       sdl-jstest
