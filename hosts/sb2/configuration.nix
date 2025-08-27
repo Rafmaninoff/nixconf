@@ -30,7 +30,6 @@
   boot.kernelParams = [ "mitigations=off" ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
     cpupower
     x86_energy_perf_policy
   ];
