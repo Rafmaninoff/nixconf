@@ -46,7 +46,6 @@
           rnote
           pciutils
           usbutils
-          stremio
           btrfs-assistant
           firefox
           unrar
