@@ -27,7 +27,7 @@
 
   boot.initrd.kernelModules = [ "pinctrl_sunrisepoint" ];
 
-  boot.kernelParams = [ "mitigations=off" ];
+  boot.kernelParams = [ "mitigations=off" "video=eDP-1:1620x1080@59.99" ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     cpupower
