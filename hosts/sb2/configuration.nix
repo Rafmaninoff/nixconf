@@ -27,7 +27,7 @@
 
   boot.initrd.kernelModules = [ "pinctrl_sunrisepoint" ];
 
-  boot.kernelParams = [ "mitigations=off" "video=eDP-1:1620x1080@59.99" ];
+  boot.kernelParams = [ "mitigations=off" "video=eDP-1:1616x1080@59.99" ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     cpupower
@@ -49,11 +49,6 @@
   hardware.cpu.intel.updateMicrocode = true;
 
   services.cpupower-gui.enable = true;
-
-  services.iptsd = {
-    enable = true;
-    config.Touchscreen.DisableOnStylus = true;
-  };
 
   services.tlp.enable = lib.mkForce false;
 
@@ -105,6 +100,8 @@
     intel-gpu-tools
     kdePackages.qtsensors
     iio-sensor-proxy
+    libinput
+    xorg.xev
     libsForQt5.qt5.qtsensors
     cheese
     webcamoid
@@ -116,6 +113,8 @@
     libva-utils
     kdePackages.kscreen
   ];
+
+  services.input-remapper.enable = true;
 
   has.ssh = true;
   services.openssh.settings.PasswordAuthentication = true;
