@@ -43,7 +43,7 @@
       haskellPackages.fast-tags
       haskellPackages.haskell-debug-adapter
       # FIXME: nixpkgs marked broken
-      # haskellPackages.ghci-dap
+      #haskellPackages.ghci-dap
 
       #formatters
       alejandra
