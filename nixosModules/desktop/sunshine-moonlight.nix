@@ -18,6 +18,7 @@ with lib;
     (mkIf config.is.sunshine-host {
       services.sunshine = {
         enable = true;
+        autoStart = true;
         capSysAdmin = true;
         openFirewall = true;
       };
