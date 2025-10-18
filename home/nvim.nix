@@ -38,11 +38,10 @@
       neocmakelsp
       taplo
       texlab
-      haskell-language-server
-      haskellPackages.hoogle
-      haskellPackages.fast-tags
-      haskellPackages.haskell-debug-adapter
-      # FIXME: nixpkgs marked broken
+      # haskell-language-server
+      # haskellPackages.hoogle
+      # haskellPackages.fast-tags
+      # haskellPackages.haskell-debug-adapter
       #haskellPackages.ghci-dap
 
       #formatters
