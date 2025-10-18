@@ -21,6 +21,12 @@ in
       (writeShellScriptBin "java21" ''
         ${pkgs.jdk21}/bin/java "$@"
       '')
+      (writeShellScriptBin "java25" ''
+        ${pkgs.jdk25}/bin/java "$@"
+      '')
+      (writeShellScriptBin "javaGraal" ''
+        ${pkgs.graalvmPackages.graalvm-oracle}/bin/java "$@"
+      '')
     ];
   };
 }

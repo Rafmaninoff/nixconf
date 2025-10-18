@@ -26,6 +26,7 @@ in
       dnsmasq
       virt-manager
       spice-gtk
+      gnome-boxes
     ];
 
 
