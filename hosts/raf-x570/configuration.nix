@@ -25,9 +25,12 @@
 
   is.sunshine-host = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
   boot.kernelParams = [ "mitigations=off" "amdgpu.dcdebugmask=0x400" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
+  services.scx = {
+    enable = true;
+  };
 
   hardware.graphics = {
     enable = true;

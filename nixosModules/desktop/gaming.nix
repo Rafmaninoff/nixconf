@@ -66,7 +66,6 @@ in
       ryubing
       dolphin-emu
       jstest-gtk
-      sdl-jstest
       evtest-qt
       (prismlauncher.override {
         jdks = with pkgs; [
