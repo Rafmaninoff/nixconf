@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, pkgs-stable, lib, config, ... }:
 with lib;
 let
   cfg = config.has.javawrappers;
@@ -25,7 +25,7 @@ in
         ${pkgs.jdk25}/bin/java "$@"
       '')
       (writeShellScriptBin "javaGraal" ''
-        ${pkgs.graalvmPackages.graalvm-oracle}/bin/java "$@"
+        ${pkgs-stable.graalvmPackages.graalvm-oracle}/bin/java "$@"
       '')
     ];
   };

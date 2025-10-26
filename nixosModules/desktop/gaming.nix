@@ -73,8 +73,7 @@ in
           jdk17
           jdk21
           jdk25
-          graalvmPackages.graalvm-oracle
-        ];
+        ] ++ [ pkgs-stable.graalvmPackages.graalvm-oracle ];
       })
       goverlay
       mangohud
