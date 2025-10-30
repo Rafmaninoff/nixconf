@@ -46,13 +46,15 @@
           rnote
           pciutils
           usbutils
-          btrfs-assistant
+          #FIXME: broken build
+          #btrfs-assistant
+          #obsidian
           firefox
           unrar
           krita
           gimp
           inkscape
-          obsidian
+
           fractal
           quickemu
           tmux
