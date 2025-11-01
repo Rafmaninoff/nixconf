@@ -79,7 +79,7 @@ in
       mangohud
       steamtinkerlaunch
       antimicrox
-      protonup
+      protonup-ng
       protontricks
       protonup-qt
       protonplus
