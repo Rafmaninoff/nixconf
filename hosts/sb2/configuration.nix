@@ -25,7 +25,7 @@
 
   has.gaming = true;
 
-  boot.initrd.kernelModules = [ "pinctrl_sunrisepoint" ];
+  boot.initrd.kernelModules = [ "pinctrl_sunrisepoint" "i915" ];
 
   boot.kernelParams = [ "mitigations=off" "video=eDP-1:1616x1080@59.99" ];
 
@@ -33,6 +33,12 @@
     cpupower
     x86_energy_perf_policy
   ];
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [ intel-media-driver vpl-gpu-rt ];
+  };
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
   boot.initrd.unl0kr = {
     allowVendorDrivers = true;
@@ -62,7 +68,7 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  services.xserver.enable = false;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
