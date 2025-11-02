@@ -1,5 +1,4 @@
-{ pkgs, pkgs-stable, lib, config, ... }:
-{
+{ pkgs, pkgs-stable, lib, config, ... }: {
   imports = [
     ./fonts.nix
     ./discord.nix
@@ -26,45 +25,45 @@
       };
     })
     (lib.mkIf config.has.defaultDesktopPackages {
-      environment.systemPackages =
-        (with pkgs; [
-          sops
-          vim
-          age
-          gnome-disk-utility
-          deluge
-          wget
-          flameshot
-          kdePackages.filelight
-          vlc
-          piper
-          signal-desktop-bin
-          telegram-desktop
-          zapzap
-          nchat
-          scrcpy
-          rnote
-          pciutils
-          usbutils
-          #FIXME: broken build
-          #btrfs-assistant
-          #obsidian
-          firefox
-          unrar
-          krita
-          gimp
-          inkscape
-
-          fractal
-          quickemu
-          tmux
-        ]) ++ (with pkgs-stable; [
-          libreoffice-qt
-          hunspell
-          hunspellDicts.es_ES
-          hunspellDicts.en_GB-ise
-          tor-browser-bundle-bin
-        ]);
+      environment.systemPackages = (with pkgs; [
+        sops
+        vim
+        age
+        gnome-disk-utility
+        deluge
+        wget
+        flameshot
+        kdePackages.filelight
+        vlc
+        piper
+        signal-desktop-bin
+        telegram-desktop
+        zapzap
+        nchat
+        scrcpy
+        rnote
+        pciutils
+        usbutils
+        #FIXME: broken build
+        #btrfs-assistant
+        #obsidian
+        firefox
+        unrar
+        krita
+        gimp
+        inkscape
+        musescore
+        muse-sounds-manager
+        fractal
+        quickemu
+        tmux
+      ]) ++ (with pkgs-stable; [
+        libreoffice-qt
+        hunspell
+        hunspellDicts.es_ES
+        hunspellDicts.en_GB-ise
+        tor-browser-bundle-bin
+      ]);
     })
   ];
 }
