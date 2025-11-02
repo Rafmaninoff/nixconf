@@ -43,14 +43,14 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
-    userEmail = "rafmaninoff@gmail.com";
-    userName = "Rafael Uria";
     signing = {
       key = null;
       signByDefault = true;
       format = "openpgp";
     };
-    extraConfig = {
+    settings = {
+      user.email = "rafmaninoff@gmail.com";
+      user.name = "Rafael Uria";
       init.defaultBranch = "main";
     };
   };
