@@ -132,6 +132,7 @@
       "us.zoom.Zoom"
       "dev.vencord.Vesktop"
       "com.microsoft.Edge"
+      "com.discordapp.Discord"
     ];
   };
 
