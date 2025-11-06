@@ -38,6 +38,7 @@
       rocmPackages.clr.icd
       mesa.opencl
     ];
+    enable32Bit = true;
   };
 
   hardware.amdgpu.overdrive = {
