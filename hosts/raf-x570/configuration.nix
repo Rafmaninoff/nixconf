@@ -25,7 +25,7 @@
 
   is.sunshine-host = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto.cachyOverride { mArch = "GENERIC_V3"; };
   boot.kernelParams = [ "mitigations=off" "amdgpu.dcdebugmask=0x400" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
   services.scx = {

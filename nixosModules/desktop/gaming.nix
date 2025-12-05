@@ -85,6 +85,7 @@ in
       protonplus
       xwayland-run
       cemu
+      umu-launcher
       (wrapOBS {
         plugins = with obs-studio-plugins; [
           obs-vkcapture

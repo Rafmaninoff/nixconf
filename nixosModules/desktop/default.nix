@@ -45,8 +45,8 @@
         pciutils
         usbutils
         #FIXME: broken build
-        #btrfs-assistant
-        #obsidian
+        btrfs-assistant
+        obsidian
         firefox
         unrar
         krita
@@ -62,7 +62,7 @@
         hunspell
         hunspellDicts.es_ES
         hunspellDicts.en_GB-ise
-        tor-browser-bundle-bin
+        tor-browser
       ]);
     })
   ];
