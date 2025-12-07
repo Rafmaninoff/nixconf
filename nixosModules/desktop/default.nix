@@ -8,6 +8,7 @@
     ./sound.nix
     ./sunshine-moonlight.nix
     ./openrgb.nix
+    ./kde-fixup.nix
   ];
 
   options.has.defaultDesktopPackages = lib.mkOption {
