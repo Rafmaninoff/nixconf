@@ -5,7 +5,8 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.11";
 
-    nixos-hardware.url = "github:nixos/nixos-hardware";
+    nixos-hardware.url =
+      "github:8bitbuddhist/nixos-hardware?ref=surface-kernel-6.18";
 
     disko = {
       url = "github:nix-community/disko/latest";
@@ -42,10 +43,16 @@
     let
       system = "x86_64-linux";
       myOverlays = [ inputs.rust-overlay.overlays.default ];
-      pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; }; overlays = myOverlays; };
-      pkgs-stable = import nixpkgs-stable { inherit system; config = { allowUnfree = true; }; };
-    in
-    {
+      pkgs = import nixpkgs {
+        inherit system;
+        config = { allowUnfree = true; };
+        overlays = myOverlays;
+      };
+      pkgs-stable = import nixpkgs-stable {
+        inherit system;
+        config = { allowUnfree = true; };
+      };
+    in {
       nixosConfigurations = {
         "sb2" = inputs.nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs pkgs-stable; };
