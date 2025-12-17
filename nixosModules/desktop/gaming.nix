@@ -100,6 +100,7 @@ in
           gst_all_1.gstreamer
         ];
       })
+      heroic
     ]) ++ (with pkgs-stable; [
       melonDS
     ]);
