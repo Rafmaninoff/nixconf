@@ -31,7 +31,7 @@
         vim
         age
         gnome-disk-utility
-        deluge
+        qbittorrent
         wget
         flameshot
         kdePackages.filelight
@@ -45,7 +45,6 @@
         rnote
         pciutils
         usbutils
-        #FIXME: broken build
         btrfs-assistant
         obsidian
         firefox
