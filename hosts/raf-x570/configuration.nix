@@ -91,6 +91,7 @@
       "us.zoom.Zoom"
       "com.usebottles.bottles"
       "com.microsoft.Edge"
+      "com.discordapp.Discord"
     ];
   };
 
