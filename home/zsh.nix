@@ -1,16 +1,34 @@
-{ inputs, pkgs, lib, ... }:
-{
+{ inputs, config, pkgs, lib, ... }: {
   programs.zsh = {
     enable = true;
+    dotDir = "${config.xdg.configHome}/zsh";
     zplug = {
       enable = true;
       plugins = [
-        { name = "romkatv/powerlevel10k"; tags = [ "as:theme" "depth:1" ]; }
-        { name = "zsh-users/zsh-completions"; tags = [ "as:plugin" ]; }
-        { name = "zsh-users/zsh-syntax-highlighting"; tags = [ "as:plugin" ]; }
-        { name = "momo-lab/zsh-abbrev-alias"; tags = [ ]; }
-        { name = "hlissner/zsh-autopair"; tags = [ ]; }
-        { name = "Tarrasch/zsh-bd"; tags = [ ]; }
+        {
+          name = "romkatv/powerlevel10k";
+          tags = [ "as:theme" "depth:1" ];
+        }
+        {
+          name = "zsh-users/zsh-completions";
+          tags = [ "as:plugin" ];
+        }
+        {
+          name = "zsh-users/zsh-syntax-highlighting";
+          tags = [ "as:plugin" ];
+        }
+        {
+          name = "momo-lab/zsh-abbrev-alias";
+          tags = [ ];
+        }
+        {
+          name = "hlissner/zsh-autopair";
+          tags = [ ];
+        }
+        {
+          name = "Tarrasch/zsh-bd";
+          tags = [ ];
+        }
         #{ name = ""; tags = [  ]; }
       ];
     };
@@ -43,6 +61,4 @@
     syntaxHighlighting.enable = true;
   };
 }
-
-
 
