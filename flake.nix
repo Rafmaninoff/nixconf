@@ -35,14 +35,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, ... }@inputs:
     let
       system = "x86_64-linux";
-      myOverlays = [ inputs.rust-overlay.overlays.default ];
+      myOverlays = [ inputs.rust-overlay.overlays.default inputs.nix-cachyos-kernel.overlays.pinned ];
       pkgs = import nixpkgs {
         inherit system;
         config = { allowUnfree = true; };
@@ -52,7 +51,8 @@
         inherit system;
         config = { allowUnfree = true; };
       };
-    in {
+    in
+    {
       nixosConfigurations = {
         "sb2" = inputs.nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs pkgs-stable; };
@@ -62,7 +62,6 @@
             inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
             inputs.nix-flatpak.nixosModules.nix-flatpak
             inputs.nixos-cli.nixosModules.nixos-cli
-            inputs.chaotic.nixosModules.default
           ];
         };
         "raf-x570" = inputs.nixpkgs.lib.nixosSystem {
@@ -71,7 +70,6 @@
             ./hosts/raf-x570/configuration.nix
             inputs.nix-flatpak.nixosModules.nix-flatpak
             inputs.nixos-cli.nixosModules.nixos-cli
-            inputs.chaotic.nixosModules.default
           ];
         };
       };
