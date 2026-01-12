@@ -15,8 +15,6 @@
   has.gaming = true;
   has.openrgb = true;
 
-  programs.adb.enable = true;
-
   services.input-remapper.enable = true;
 
   services.ratbagd.enable = true;
