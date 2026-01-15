@@ -73,6 +73,7 @@ in
           jdk17
           jdk21
           jdk25
+          javaPackages.compiler.temurin-bin.jdk-21
         ] ++ [ pkgs-stable.graalvmPackages.graalvm-oracle ];
       })
       goverlay
