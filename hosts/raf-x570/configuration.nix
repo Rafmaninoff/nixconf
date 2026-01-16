@@ -74,7 +74,15 @@
   environment.systemPackages = with pkgs; [
     teamspeak6-client
     winboat
+    vial
+    via
   ];
+
+  hardware.keyboard.qmk.enable = true;
+
+  services.udev.packages = with pkgs; [ via vial ];
+
+
 
   has.zerotierone = true;
 
