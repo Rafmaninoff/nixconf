@@ -1,5 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
-{
+{ config, pkgs, lib, inputs, ... }: {
   imports = [
     ../presets/pc.nix
     ./hardware-configuration.nix
@@ -23,19 +22,15 @@
 
   is.sunshine-host = true;
 
-  boot.kernelPackages = inputs.nix-cachyos-kernel.legacyPackages.x86_64-linux.linuxPackages-cachyos-latest-lto-x86_64-v3;
+  boot.kernelPackages =
+    inputs.nix-cachyos-kernel.legacyPackages.x86_64-linux.linuxPackages-cachyos-latest-lto-x86_64-v3;
   boot.kernelParams = [ "mitigations=off" "amdgpu.dcdebugmask=0x400" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  services.scx = {
-    enable = true;
-  };
+  services.scx = { enable = true; };
 
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-      mesa.opencl
-    ];
+    extraPackages = with pkgs; [ rocmPackages.clr.icd mesa.opencl ];
     enable32Bit = true;
   };
 
@@ -82,11 +77,7 @@
 
   services.udev.packages = with pkgs; [ via vial ];
 
-
-
   has.zerotierone = true;
-
-
 
   has.ssh = true;
   services.openssh.settings.PasswordAuthentication = true;
@@ -99,11 +90,11 @@
       "com.usebottles.bottles"
       "com.microsoft.Edge"
       "com.discordapp.Discord"
+      "com.github.flxzt.rnote"
     ];
   };
 
   has.libvirt = true;
-
 
   system.stateVersion = "25.05";
 }

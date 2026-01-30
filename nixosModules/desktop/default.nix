@@ -42,7 +42,6 @@
         zapzap
         nchat
         scrcpy
-        rnote
         pciutils
         usbutils
         btrfs-assistant

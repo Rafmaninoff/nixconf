@@ -133,6 +133,7 @@
       "dev.vencord.Vesktop"
       "com.microsoft.Edge"
       "com.discordapp.Discord"
+      "com.github.flxzt.rnote"
     ];
   };
 
