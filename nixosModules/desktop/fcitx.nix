@@ -17,10 +17,10 @@ in
       enable = true;
       fcitx5 = {
         waylandFrontend = true;
-        # addons = with pkgs; [
-        #   fcitx5-mozc
-        #   fcitx5-material-color
-        # ];
+        addons = with pkgs; [
+          fcitx5-mozc
+          fcitx5-material-color
+        ];
       };
     };
   };
