@@ -41,10 +41,10 @@ in
     nixpkgs.config.packageOverrides = pkgs: {
       steam = pkgs.steam.override {
         extraPkgs = pkgs: with pkgs; [
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
+          libxcursor
+          libxi
+          libXinerama
+          libxscrnsaver
           libpng
           libpulseaudio
           libvorbis
@@ -95,7 +95,7 @@ in
       (lutris.override {
         extraPkgs = pkgs: [
           adwaita-icon-theme
-          wineWowPackages.waylandFull
+          wineWow64Packages.waylandFull
         ];
         extraLibraries = pkgs: [
           gst_all_1.gstreamer
