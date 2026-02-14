@@ -46,7 +46,7 @@
 
       #formatters
       alejandra
-      nixfmt-classic
+      nixfmt
       nixpkgs-fmt
       beautysh
       stylua
