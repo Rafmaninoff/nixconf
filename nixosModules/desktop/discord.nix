@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 with lib;
 let
   cfg = config.has.discord;
@@ -11,7 +16,15 @@ in
   };
 
   config = mkIf cfg {
-    environment.systemPackages = with pkgs; [ vesktop equibop arrpc ];
+    environment.systemPackages = with pkgs; [
+      vesktop
+      equibop
+      arrpc
+      (discord.override {
+        withOpenASAR = true;
+        withVencord = true;
+      })
+    ];
     systemd.user.services = {
       arrpc = {
         partOf = [ "graphical-session.target" ];
