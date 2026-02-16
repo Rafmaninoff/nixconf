@@ -28,6 +28,7 @@
       ast-grep
 
       #language servers
+      statix
       nil
       gopls
       bash-language-server
