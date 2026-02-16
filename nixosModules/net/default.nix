@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   imports = [
     ./ssh.nix
     ./fail2endlessh.nix
@@ -8,7 +14,12 @@
 
   networking.firewall =
     let
-      portsAll = [ 4656 63763 25565 27765 ];
+      portsAll = [
+        4656
+        63763
+        25565
+        27765
+      ];
     in
     {
       enable = true;
@@ -18,4 +29,3 @@
       allowedUDPPorts = portsAll ++ [ ];
     };
 }
-

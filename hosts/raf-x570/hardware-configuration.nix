@@ -1,11 +1,21 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-
-  boot.initrd.availableKernelModules = [ "nvme" "usbhid" "uas" "usb_storage" ];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "usbhid"
+    "uas"
+    "usb_storage"
+  ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
@@ -83,36 +93,54 @@
     "/" = {
       device = "/dev/mapper/nixos-root";
       fsType = "btrfs";
-      options = [ "compress=zstd" "noatime" ];
+      options = [
+        "compress=zstd"
+        "noatime"
+      ];
     };
     "/mnt/fastfiles2" = {
       device = "/dev/mapper/fastfiles2";
       fsType = "btrfs";
-      options = [ "compress=zstd" "noatime" ];
+      options = [
+        "compress=zstd"
+        "noatime"
+      ];
     };
     "/mnt/fastfiles1" = {
       device = "/dev/mapper/fastfiles1";
       fsType = "btrfs";
-      options = [ "compress=zstd" "noatime" ];
+      options = [
+        "compress=zstd"
+        "noatime"
+      ];
     };
     "/mnt/slowfiles1" = {
       device = "/dev/mapper/slowfiles1";
       fsType = "btrfs";
-      options = [ "compress=zstd" "noatime" ];
+      options = [
+        "compress=zstd"
+        "noatime"
+      ];
     };
     "/mnt/slowfiles2" = {
       device = "/dev/mapper/slowfiles2";
       fsType = "btrfs";
-      options = [ "compress=zstd" "noatime" ];
+      options = [
+        "compress=zstd"
+        "noatime"
+      ];
     };
     "/mnt/slowfiles3" = {
       device = "/dev/mapper/slowfiles3";
       fsType = "btrfs";
-      options = [ "compress=zstd" "noatime" ];
+      options = [
+        "compress=zstd"
+        "noatime"
+      ];
     };
   };
 
-  swapDevices = [{ device = "/dev/mapper/nixos-swap"; }];
+  swapDevices = [ { device = "/dev/mapper/nixos-swap"; } ];
 
   networking.useDHCP = lib.mkDefault true;
 

@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 with lib;
 {
   options.is.pc = mkOption {
@@ -23,7 +28,5 @@ with lib;
       };
     }
   ];
-
-
 
 }

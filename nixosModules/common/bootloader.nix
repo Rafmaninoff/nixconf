@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
   boot.initrd.systemd.enable = true;
   boot.loader = {
     efi.canTouchEfiVariables = true;

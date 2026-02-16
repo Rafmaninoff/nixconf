@@ -1,4 +1,11 @@
-{ inputs, config, pkgs, lib, ... }: {
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   programs.zsh = {
     enable = true;
     dotDir = "${config.xdg.configHome}/zsh";
@@ -7,7 +14,10 @@
       plugins = [
         {
           name = "romkatv/powerlevel10k";
-          tags = [ "as:theme" "depth:1" ];
+          tags = [
+            "as:theme"
+            "depth:1"
+          ];
         }
         {
           name = "zsh-users/zsh-completions";
@@ -61,4 +71,3 @@
     syntaxHighlighting.enable = true;
   };
 }
-

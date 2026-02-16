@@ -1,13 +1,13 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, vcpkg
-, httplib
-, openssl
-, nlohmann_json
-, curl
-, cmake
-,
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  vcpkg,
+  httplib,
+  openssl,
+  nlohmann_json,
+  curl,
+  cmake,
 }:
 stdenv.mkDerivation rec {
   pname = "beammp-launcher";

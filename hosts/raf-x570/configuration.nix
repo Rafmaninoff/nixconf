@@ -1,4 +1,11 @@
-{ config, pkgs, lib, inputs, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
   imports = [
     ../presets/pc.nix
     ./hardware-configuration.nix
@@ -24,13 +31,21 @@
 
   boot.kernelPackages =
     inputs.nix-cachyos-kernel.legacyPackages.x86_64-linux.linuxPackages-cachyos-latest-lto-x86_64-v3;
-  boot.kernelParams = [ "mitigations=off" "amdgpu.dcdebugmask=0x400" ];
+  boot.kernelParams = [
+    "mitigations=off"
+    "amdgpu.dcdebugmask=0x400"
+  ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  services.scx = { enable = true; };
+  services.scx = {
+    enable = true;
+  };
 
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [ rocmPackages.clr.icd mesa.opencl ];
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+      mesa.opencl
+    ];
     enable32Bit = true;
   };
 
@@ -63,7 +78,13 @@
     isNormalUser = true;
     description = "raf";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "input" "adbusers" "video" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "input"
+      "adbusers"
+      "video"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -75,7 +96,10 @@
 
   hardware.keyboard.qmk.enable = true;
 
-  services.udev.packages = with pkgs; [ via vial ];
+  services.udev.packages = with pkgs; [
+    via
+    vial
+  ];
 
   has.zerotierone = true;
 

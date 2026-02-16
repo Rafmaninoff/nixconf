@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 with lib;
 let
   cfg = config.my.fail2endlessh;
@@ -25,7 +30,7 @@ in
 
   config = mkIf cfg.enable {
 
-    services.openssh. ports = [ cfg.sshdPort ];
+    services.openssh.ports = [ cfg.sshdPort ];
 
     services.endlessh-go = {
       enable = true;

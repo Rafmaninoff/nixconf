@@ -5,8 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.11";
 
-    nixos-hardware.url =
-      "github:8bitbuddhist/nixos-hardware?ref=surface-kernel-6.18";
+    nixos-hardware.url = "github:8bitbuddhist/nixos-hardware?ref=surface-kernel-6.18";
 
     disko = {
       url = "github:nix-community/disko/latest";
@@ -38,18 +37,31 @@
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
-      myOverlays = [ inputs.rust-overlay.overlays.default inputs.nix-cachyos-kernel.overlays.pinned ];
+      myOverlays = [
+        inputs.rust-overlay.overlays.default
+        inputs.nix-cachyos-kernel.overlays.pinned
+      ];
       pkgs = import nixpkgs {
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
         overlays = myOverlays;
       };
       pkgs-stable = import nixpkgs-stable {
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
       };
     in
     {
@@ -76,13 +88,13 @@
 
       homeConfigurations = {
         "raf@sb2" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
+          inherit pkgs;
           extraSpecialArgs = { inherit inputs; };
           modules = [ ./home/home.nix ];
         };
 
         "raf@raf-x570" = inputs.home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs;
+          inherit pkgs;
           extraSpecialArgs = { inherit inputs; };
           modules = [ ./home/home.nix ];
         };

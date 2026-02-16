@@ -1,6 +1,13 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{ inputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -54,9 +61,14 @@
     };
   };
 
-  programs.zellij = { enable = false; };
+  programs.zellij = {
+    enable = false;
+  };
 
-  programs.zoxide = { enable = true; enableZshIntegration = true; };
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   services.gpg-agent = {
     enable = true;
@@ -64,8 +76,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     pinentry.package = pkgs.pinentry-qt;
-    extraConfig = ''
-    '';
+    extraConfig = "";
   };
 
   programs.direnv = {

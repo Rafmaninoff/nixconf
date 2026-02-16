@@ -1,4 +1,10 @@
-{ pkgs, pkgs-stable, lib, config, ... }:
+{
+  pkgs,
+  pkgs-stable,
+  lib,
+  config,
+  ...
+}:
 with lib;
 let
   cfg = config.has.gaming;
@@ -40,71 +46,77 @@ in
 
     nixpkgs.config.packageOverrides = pkgs: {
       steam = pkgs.steam.override {
-        extraPkgs = pkgs: with pkgs; [
-          libxcursor
-          libxi
-          libXinerama
-          libxscrnsaver
-          libpng
-          libpulseaudio
-          libvorbis
-          stdenv.cc.cc.lib
-          libkrb5
-          keyutils
-          (writeShellScriptBin "launch-gamescope" ''
-            (sleep 1; pgrep gamescope | xargs renice -n -11 -p)&
-            exec gamescope "$@"
-          '')
-        ];
+        extraPkgs =
+          pkgs: with pkgs; [
+            libxcursor
+            libxi
+            libXinerama
+            libxscrnsaver
+            libpng
+            libpulseaudio
+            libvorbis
+            stdenv.cc.cc.lib
+            libkrb5
+            keyutils
+            (writeShellScriptBin "launch-gamescope" ''
+              (sleep 1; pgrep gamescope | xargs renice -n -11 -p)&
+              exec gamescope "$@"
+            '')
+          ];
       };
     };
 
-    environment.systemPackages = (with pkgs; [
-      vulkan-tools
-      gpu-viewer
-      ckan
-      ryubing
-      dolphin-emu
-      jstest-gtk
-      evtest-qt
-      (prismlauncher.override {
-        jdks = with pkgs; [
-          jdk8
-          jdk17
-          jdk21
-          jdk25
-          javaPackages.compiler.temurin-bin.jdk-21
-        ] ++ [ pkgs-stable.graalvmPackages.graalvm-oracle ];
-      })
-      goverlay
-      mangohud
-      steamtinkerlaunch
-      antimicrox
-      protonup-ng
-      protontricks
-      protonup-qt
-      protonplus
-      xwayland-run
-      cemu
-      umu-launcher
-      (wrapOBS {
-        plugins = with obs-studio-plugins; [
-          obs-vkcapture
-        ];
-      })
-      (lutris.override {
-        extraPkgs = pkgs: [
-          adwaita-icon-theme
-          wineWow64Packages.waylandFull
-        ];
-        extraLibraries = pkgs: [
-          gst_all_1.gstreamer
-        ];
-      })
-      heroic
-    ]) ++ (with pkgs-stable; [
-      melonDS
-    ]);
+    environment.systemPackages =
+      (with pkgs; [
+        vulkan-tools
+        gpu-viewer
+        ckan
+        ryubing
+        dolphin-emu
+        jstest-gtk
+        evtest-qt
+        (prismlauncher.override {
+          jdks =
+            with pkgs;
+            [
+              jdk8
+              jdk17
+              jdk21
+              jdk25
+              javaPackages.compiler.temurin-bin.jdk-21
+            ]
+            ++ [ pkgs-stable.graalvmPackages.graalvm-oracle ];
+        })
+        goverlay
+        mangohud
+        steamtinkerlaunch
+        antimicrox
+        protonup-ng
+        protontricks
+        protonup-qt
+        protonplus
+        xwayland-run
+        cemu
+        umu-launcher
+        (wrapOBS {
+          plugins = with obs-studio-plugins; [
+            obs-vkcapture
+          ];
+        })
+        (lutris.override {
+          extraPkgs = pkgs: [
+            adwaita-icon-theme
+            wineWow64Packages.waylandFull
+          ];
+          extraLibraries = pkgs: [
+            gst_all_1.gstreamer
+          ];
+        })
+        heroic
+      ])
+      ++ (with pkgs-stable; [
+        melonDS
+      ]);
 
     programs.gamemode = {
       enable = true;
@@ -127,7 +139,11 @@ in
 
     #blocked battleye servers
     networking.hosts = {
-      "0.0.0.0" = [ "paradise-s1.battleye.com" "test-s1.battleye.com" "paradiseenhanced-s1.battleye.com" ];
+      "0.0.0.0" = [
+        "paradise-s1.battleye.com"
+        "test-s1.battleye.com"
+        "paradiseenhanced-s1.battleye.com"
+      ];
     };
   };
 }

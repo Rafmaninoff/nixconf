@@ -1,4 +1,10 @@
-{ pkgs, pkgs-stable, lib, config, ... }:
+{
+  pkgs,
+  pkgs-stable,
+  lib,
+  config,
+  ...
+}:
 with lib;
 let
   cfg = config.has.javawrappers;

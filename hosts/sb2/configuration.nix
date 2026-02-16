@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -25,9 +30,15 @@
 
   has.gaming = true;
 
-  boot.initrd.kernelModules = [ "pinctrl_sunrisepoint" "i915" ];
+  boot.initrd.kernelModules = [
+    "pinctrl_sunrisepoint"
+    "i915"
+  ];
 
-  boot.kernelParams = [ "mitigations=off" "video=eDP-1:1616x1080@59.99" ];
+  boot.kernelParams = [
+    "mitigations=off"
+    "video=eDP-1:1616x1080@59.99"
+  ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     cpupower
@@ -36,9 +47,14 @@
 
   hardware.graphics = {
     enable = true;
-    extraPackages = with pkgs; [ intel-media-driver vpl-gpu-rt ];
+    extraPackages = with pkgs; [
+      intel-media-driver
+      vpl-gpu-rt
+    ];
   };
-  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
 
   boot.initrd.unl0kr = {
     allowVendorDrivers = true;
@@ -50,7 +66,9 @@
 
   services.thermald.enable = lib.mkForce false;
 
-  boot.kernel.sysctl = { "dev.i915.perf_stream_paranoid" = 0; };
+  boot.kernel.sysctl = {
+    "dev.i915.perf_stream_paranoid" = 0;
+  };
 
   hardware.cpu.intel.updateMicrocode = true;
 
@@ -82,8 +100,13 @@
   users.users.raf = {
     isNormalUser = true;
     description = "raf";
-    extraGroups =
-      [ "networkmanager" "wheel" "input" "adbusers" "surface-control" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "input"
+      "adbusers"
+      "surface-control"
+    ];
     shell = pkgs.zsh;
   };
 
@@ -95,7 +118,10 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

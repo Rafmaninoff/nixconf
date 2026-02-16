@@ -1,12 +1,16 @@
 # Fix wireplumber from segfaults until this is in https://github.com/NixOS/nixpkgs/pull/427606
 # grabbed from https://gist.github.com/outten45/94361183164ab5e7790253c685176e57
-# 
+#
 # add to "imports" and then enable option:
 #
 #   `services.pipewire.useCustomLibcamera = true;`
 
-
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   # Custom libcamera with post-processing
@@ -37,5 +41,5 @@ in
 
     # Optional: expose custom libcamera system-wide
     environment.systemPackages = [ customLibcamera ];
-    };
+  };
 }

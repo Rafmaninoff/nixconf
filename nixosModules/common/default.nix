@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   imports = [
     ./sudo.nix
     ./appimage.nix
@@ -10,6 +16,5 @@
     ./distrobox.nix
     ./libvirt.nix
   ];
-
 
 }

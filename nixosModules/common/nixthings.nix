@@ -1,8 +1,17 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   nix = {
     package = pkgs.lix;
-    settings.experimental-features = [ "nix-command" "flakes" "pipe-operator" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+      "pipe-operator"
+    ];
     settings.substituters = [
       "https://watersucks.cachix.org"
       "https://attic.xuyh0120.win/lantian"

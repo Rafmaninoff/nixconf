@@ -1,4 +1,10 @@
-{ pkgs, lib, config, ... }: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
 
   programs.neovim = {
     enable = true;
@@ -7,7 +13,12 @@
     withPython3 = true;
     extraPackages = with pkgs; [
       (rust-bin.stable.latest.default.override {
-        extensions = [ "rust-src" "rust-analyzer" "rustfmt" "clippy" ];
+        extensions = [
+          "rust-src"
+          "rust-analyzer"
+          "rustfmt"
+          "clippy"
+        ];
       })
       lua5_1
       lua51Packages.luarocks-nix

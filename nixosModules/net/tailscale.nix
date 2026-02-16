@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 with lib;
 let
   cfg = config.has.tailscale;
@@ -13,7 +18,6 @@ in
   config = mkIf config.has.tailscale {
 
     services.tailscale.enable = true;
-
 
   };
 
