@@ -39,6 +39,8 @@
     gh
     yadm
     ripgrep
+    jq
+    pigz
   ];
 
   xdg.enable = true;
