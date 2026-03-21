@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.11";
 
-    nixos-hardware.url = "github:8bitbuddhist/nixos-hardware?ref=surface-kernel-6.18";
+    nixos-hardware.url = "github:nix-community/nixos-hardware";
 
     disko = {
       url = "github:nix-community/disko/latest";
