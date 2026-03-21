@@ -153,6 +153,7 @@
 
   has.flatpak = {
     enable = true;
+    declarativeOnly = false;
     flatpaks = [
       "org.jdownloader.JDownloader"
       "us.zoom.Zoom"
