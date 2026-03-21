@@ -45,7 +45,7 @@
           kdePackages.filelight
           vlc
           piper
-          signal-desktop-bin
+          signal-desktop
           telegram-desktop
           zapzap
           nchat
