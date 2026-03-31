@@ -71,7 +71,7 @@ in
         vulkan-tools
         gpu-viewer
         ckan
-        ryubing
+        eden
         dolphin-emu
         jstest-gtk
         evtest-qt
