@@ -89,7 +89,6 @@
 
   environment.systemPackages = with pkgs; [
     teamspeak6-client
-    winboat
     vial
     via
   ];
