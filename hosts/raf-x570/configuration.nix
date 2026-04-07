@@ -114,6 +114,7 @@
       "com.microsoft.Edge"
       "com.discordapp.Discord"
       "com.github.flxzt.rnote"
+      "com.parsecgaming.parsec"
     ];
   };
 
