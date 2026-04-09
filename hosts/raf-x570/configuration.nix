@@ -91,6 +91,8 @@
     teamspeak6-client
     vial
     via
+    qmk
+    dos2unix
   ];
 
   hardware.keyboard.qmk.enable = true;
@@ -98,6 +100,7 @@
   services.udev.packages = with pkgs; [
     via
     vial
+    qmk-udev-rules
   ];
 
   has.zerotierone = true;
