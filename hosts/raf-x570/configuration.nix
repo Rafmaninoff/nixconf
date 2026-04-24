@@ -93,6 +93,7 @@
     via
     qmk
     dos2unix
+    bottles
   ];
 
   hardware.keyboard.qmk.enable = true;
@@ -113,7 +114,6 @@
     flatpaks = [
       "org.jdownloader.JDownloader"
       "us.zoom.Zoom"
-      "com.usebottles.bottles"
       "com.microsoft.Edge"
       "com.discordapp.Discord"
       "com.github.flxzt.rnote"
