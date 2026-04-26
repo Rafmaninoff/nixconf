@@ -11,6 +11,7 @@
     defaultEditor = true;
     vimdiffAlias = true;
     withPython3 = true;
+    withRuby = true;
     extraPackages = with pkgs; [
       (rust-bin.stable.latest.default.override {
         extensions = [
