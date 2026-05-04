@@ -133,7 +133,7 @@
     kdePackages.qtsensors
     iio-sensor-proxy
     libinput
-    xorg.xev
+    xev
     libsForQt5.qt5.qtsensors
     cheese
     webcamoid
