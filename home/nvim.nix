@@ -71,5 +71,9 @@
 
     plugins = with pkgs.vimPlugins; [ markdown-preview-nvim ];
 
+    initLua = ''
+      require("config.lazy")
+      '';
+
   };
 }
