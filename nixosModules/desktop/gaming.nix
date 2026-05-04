@@ -72,6 +72,7 @@ in
         gpu-viewer
         ckan
         eden
+        ryubing
         dolphin-emu
         jstest-gtk
         evtest-qt
