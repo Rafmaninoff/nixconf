@@ -66,6 +66,15 @@ in
       };
     };
 
+    #FIXME: until https://github.com/NixOS/nixpkgs/pull/516445 is merged
+    nixpkgs.overlays = [
+      (final: prev: {
+        openldap = prev.openldap.overrideAttrs (_: {
+          doCheck = false;
+        });
+      })
+    ];
+
     environment.systemPackages =
       (with pkgs; [
         vulkan-tools
