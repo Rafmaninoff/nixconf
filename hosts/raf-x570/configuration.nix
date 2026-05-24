@@ -88,7 +88,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    teamspeak6-client
+    # teamspeak6-client
     vial
     via
     qmk
