@@ -70,7 +70,7 @@ in
     nixpkgs.overlays = [
       (final: prev: {
         openldap = prev.openldap.overrideAttrs (_: {
-          doCheck = false;
+          doCheck = !prev.stdenv.hostPlatform.isi686;
         });
       })
     ];
