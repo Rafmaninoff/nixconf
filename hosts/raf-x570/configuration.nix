@@ -123,5 +123,7 @@
 
   has.libvirt = true;
 
+  vram-prio = true;
+
   system.stateVersion = "25.05";
 }

@@ -16,6 +16,7 @@
     ./sunshine-moonlight.nix
     ./openrgb.nix
     ./kde-fixup.nix
+    ./vram-prio.nix
   ];
 
   options.has.defaultDesktopPackages = lib.mkOption {
