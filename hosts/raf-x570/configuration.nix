@@ -35,7 +35,10 @@
     "mitigations=off"
     "amdgpu.dcdebugmask=0x400"
   ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [
+    "amdgpu"
+    "ntsync"
+  ];
   services.scx = {
     enable = true;
   };
