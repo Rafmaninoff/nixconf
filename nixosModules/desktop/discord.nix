@@ -40,25 +40,25 @@ in
     environment.systemPackages = with pkgs; [
       vesktop
       equibop
-      arrpc
+      # arrpc
       krisp-patcher
       (discord.override {
         # withOpenASAR = true;
         withVencord = true;
       })
     ];
-    systemd.user.services = {
-      arrpc = {
-        partOf = [ "graphical-session.target" ];
-        after = [ "graphical-sesstion.target" ];
-        wantedBy = [ "graphical-session.target" ];
-
-        description = "Discord rich presence for non-default clients";
-        serviceConfig = {
-          ExecStart = "${getExe pkgs.arrpc}";
-          Restart = "always";
-        };
-      };
-    };
+    # systemd.user.services = {
+    #   arrpc = {
+    #     partOf = [ "graphical-session.target" ];
+    #     after = [ "graphical-sesstion.target" ];
+    #     wantedBy = [ "graphical-session.target" ];
+    #
+    #     description = "Discord rich presence for non-default clients";
+    #     serviceConfig = {
+    #       ExecStart = "${getExe pkgs.arrpc}";
+    #       Restart = "always";
+    #     };
+    #   };
+    # };
   };
 }
