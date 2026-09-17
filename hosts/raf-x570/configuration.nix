@@ -23,6 +23,8 @@
 
   services.input-remapper.enable = true;
 
+  services.lact.enable = true;
+
   services.ratbagd.enable = true;
 
   programs.corectrl.enable = true;
