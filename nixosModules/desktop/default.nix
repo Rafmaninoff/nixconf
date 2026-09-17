@@ -15,7 +15,6 @@
     ./sound.nix
     ./sunshine-moonlight.nix
     ./openrgb.nix
-    ./kde-fixup.nix
     ./vram-prio.nix
   ];
 
