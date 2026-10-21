@@ -23,7 +23,7 @@ in
       fcitx5 = {
         waylandFrontend = true;
         addons = with pkgs; [
-          fcitx5-mozc
+          # fcitx5-mozc
           fcitx5-material-color
         ];
       };
