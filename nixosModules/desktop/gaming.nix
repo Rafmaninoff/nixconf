@@ -111,6 +111,11 @@ in
         (wrapOBS {
           plugins = with obs-studio-plugins; [
             obs-vkcapture
+            obs-vaapi
+            input-overlay
+            wlrobs
+            obs-mute-filter
+            obs-pipewire-audio-capture
           ];
         })
         (lutris.override {
