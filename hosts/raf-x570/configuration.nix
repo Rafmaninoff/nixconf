@@ -126,7 +126,7 @@
     ];
   };
 
-  has.libvirt = true;
+  has.libvirt = false;
 
   vram-prio = true;
 
