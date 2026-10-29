@@ -59,8 +59,6 @@
           krita
           gimp
           inkscape
-          musescore
-          muse-sounds-manager
           fractal
           quickemu
           tmux
@@ -71,6 +69,8 @@
           hunspellDicts.es_ES
           hunspellDicts.en_GB-ise
           tor-browser
+          musescore
+          muse-sounds-manager
         ]);
     })
   ];
