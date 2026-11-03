@@ -14,11 +14,11 @@
     ];
     settings.substituters = [
       "https://watersucks.cachix.org"
-      "https://attic.xuyh0120.win/lantian"
+      "https://cache.lantian.pub/lantian"
     ];
     settings.trusted-public-keys = [
       "watersucks.cachix.org-1:6gadPC5R8iLWQ3EUtfu3GFrVY7X6I4Fwz/ihW25Jbv8="
-      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+      "lantian:WVGO7vsRMSEN+h7Lp7kv6SAmrkEXgUGbbXm7jMDjBuQ="
     ];
     optimise = {
       automatic = true;
